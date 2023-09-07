@@ -22,7 +22,7 @@ public class AuthController {
         if (principal != null) {
             return principal.getName();
         }
-        return "anonymousUser";
+        return "unbekannter Benutzer";
     }
 
     @PostMapping("/register")
@@ -41,7 +41,7 @@ public class AuthController {
     public String logout(HttpSession session) {
         session.invalidate();
         SecurityContextHolder.clearContext();
-        return "Successfull logout!";
+        return "Erfolgreich ausgelogt!";
     }
 }
 
