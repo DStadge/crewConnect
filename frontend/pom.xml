@@ -39,7 +39,14 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>  </dependencies>
+    </dependency>
+      <dependency>
+          <groupId>de.iav</groupId>
+          <artifactId>backend</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+          <scope>compile</scope>
+      </dependency>
+  </dependencies>
 
   <build>
     <plugins>
@@ -61,7 +68,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>de.iav.frontend/de.iav.frontend.HelloApplication</mainClass>
+              <mainClass>de.iav.frontend/de.iav.frontend.CrewConnect</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.RegisterController">
+    <children>
+        <Button mnemonicParsing="false" onAction="#onClickBackButton" text="zurueck">
+            <VBox.margin>
+                <Insets bottom="200.0" />
+            </VBox.margin>
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+        </Button>
+        <Label text="Seglername">
+         <font>
+            <Font name="Comic Sans MS" size="22.0" />
+         </font></Label>
+        <TextField fx:id="usernameInput" />
+      <Label text="e-mail">
+         <font>
+            <Font name="Comic Sans MS" size="22.0" />
+         </font>
+      </Label>
+        <TextField fx:id="emailInput" />
+      <Label text="Passwort">
+         <font>
+            <Font name="Comic Sans MS" size="22.0" />
+         </font>
+      </Label>
+        <PasswordField fx:id="passwordInput" />
+        <HBox />
+          <Button mnemonicParsing="false" onAction="#onRegisterClick" prefHeight="27.0" prefWidth="268.0" text="Jetzt Registrieren">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </Button>
+        <Label fx:id="errorLabel" />
+    </children>
+    <padding>
+        <Insets left="50.0" right="50.0" />
+    </padding>
+</VBox>
