@@ -19,7 +19,7 @@ public class AppUserService implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { //nachfolgend ist es immer "username" egal ob username oder email
         AppUser appUser = appUserRepository.findByEmail(username)//.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("user not found!"));
+                .orElseThrow(() -> new UsernameNotFoundException("Benutzer nicht gefunden! "));
         return User.builder()
                 .username(appUser.username())
                 .password(appUser.password())
@@ -32,7 +32,7 @@ public class AppUserService implements UserDetailsService{
                 appUserRepository.findByUsername(appUserRequest.username()).isPresent() ||
                         appUserRepository.findByEmail(appUserRequest.email()).isPresent()
         ) {
-            throw new UserAlreadyExistException("Username already exists");
+            throw new UserAlreadyExistException("Benutzer ist schon angelegt!");
         }
 
 
