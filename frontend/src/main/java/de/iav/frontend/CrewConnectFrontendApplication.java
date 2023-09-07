@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CrewConnectFrontend extends Application {
+public class CrewConnectFrontendApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontend.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Login page");
         stage.setScene(scene);

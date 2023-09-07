@@ -1,6 +1,6 @@
 package de.iav.frontend.controller;
 
-import de.iav.frontend.CrewConnectFrontend;
+import de.iav.frontend.CrewConnectFrontendApplication;
 import de.iav.frontend.exception.CustomIOException;
 import de.iav.frontend.security.AppUserRequest;
 import de.iav.frontend.security.AuthService;
@@ -30,7 +30,7 @@ public class RegisterController {
 
     @FXML
     protected void onClickBackButton(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(CrewConnectFrontend.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
         Parent root;
         try {
             root = loader.load();
@@ -58,7 +58,7 @@ public class RegisterController {
         );
 
         if (authService.registerAppUser(appUserRequest)) {
-            FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontend.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
             Parent root = null;
             try {
                 root = fxmlLoader.load();
