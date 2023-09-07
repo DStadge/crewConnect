@@ -17,7 +17,7 @@
     <properties>
         <sonar.organization>dstadge</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <java.version>17</java.version>
+        <java.version>20.0.1</java.version>
     </properties>
     <dependencies>
         <dependency>
