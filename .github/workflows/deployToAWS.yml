@@ -50,6 +50,6 @@ jobs:
         with:
           push: true
           #Set dockerhub project (replace "sergejneuefische/javafx-student-db")
-          tags: trabidirk007/java-CrewConnect:latest
+          tags: trabidirk007/crewConnect:latest
           context: ./backend
 
