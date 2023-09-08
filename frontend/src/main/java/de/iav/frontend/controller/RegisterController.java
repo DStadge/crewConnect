@@ -18,9 +18,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RegisterController {
-   /* @FXML
+    @FXML
     public TextField usernameInput;
-    */
+
     @FXML
     public TextField emailInput;
     @FXML
@@ -45,6 +45,7 @@ public class RegisterController {
 
     @FXML
     protected void onRegisterClick() {
+      //  System.out.println("Register");
         register();
     }
 
@@ -53,6 +54,7 @@ public class RegisterController {
     public void register() {
 
         AppUserRequest appUserRequest = new AppUserRequest(
+                usernameInput.getText(),
                 emailInput.getText(),
                 passwordInput.getText()
         );

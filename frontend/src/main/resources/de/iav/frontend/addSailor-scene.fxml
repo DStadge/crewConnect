@@ -19,7 +19,7 @@
         </Button>
         <Label text="Bitte Deine Daten eingeben" textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="16.0" />
+                <Font name="Comic Sans MS" size="16.0" />
             </font>
             <VBox.margin>
                 <Insets bottom="25.0" top="60.0" />

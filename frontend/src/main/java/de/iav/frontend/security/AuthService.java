@@ -61,11 +61,11 @@ public class AuthService {
             if (statusCode == 201) {
                 return true;
             } else {
-                setErrorMessage("Registration failed. /n Email or Username duplicate?");
+                setErrorMessage("Registrierung fehlgeschlagen. / Email oder Benutzername schon eingetragen?");
                 return false;
             }
         } catch (JsonProcessingException e) {
-            throw new CustomJsonProcessingException("Could not register user!", e);
+            throw new CustomJsonProcessingException("Benutzer kann nicht registriert werden!", e);
 
         }
 
@@ -76,7 +76,7 @@ public class AuthService {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(BACKEND_AUTH_URL + "/login"))
                 .POST(HttpRequest.BodyPublishers.ofString(""))
-                .header("Authorization", "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes()))
+                .header("Authorization", "Basic " + Base64.getEncoder().encodeToString((username + ": " + password).getBytes()))
                 .build();
 
         var response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
@@ -90,7 +90,7 @@ public class AuthService {
 
             return true;
         } else {
-            setErrorMessage("Login failed. Wrong username or password?");
+            setErrorMessage("Login fehlgeschlagen. Falscher Benutzername und / oder Passwort?");
             return false;
         }
     }
@@ -108,7 +108,7 @@ public class AuthService {
         if (statusCode == 200) {
             return true;
         } else {
-            setErrorMessage("Logout failed");
+            setErrorMessage("Login fehlgeschlagen.");
             return false;
         }
     }
