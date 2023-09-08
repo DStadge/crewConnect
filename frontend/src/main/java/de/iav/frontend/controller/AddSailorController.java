@@ -82,15 +82,6 @@ public class AddSailorController implements Initializable {
         sceneSwitchService.saveNewSailorSwitchToMainScene(event);
     }
 
-    @FXML
-    protected void addMultiButton() {
-        SailorWithoutId newSailor = new SailorWithoutId(firstName.getText(), lastName.getText(), experienceChoiceBox.getSelectionModel().getSelectedItem(), sailDate.getValue());
-        sailorService.addSailor(newSailor);
-        firstName.clear();
-        lastName.clear();
-        experienceChoiceBox.setValue("");
-        sailDate.getEditor().clear();
-    }
 
     @FXML
     public void setSelectedSailor(Sailor selectedSailor) {

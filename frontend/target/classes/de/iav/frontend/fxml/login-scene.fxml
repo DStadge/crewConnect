@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.LoginController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.LoginController">
     <children>
         <Label text="Wilkommen zum CrewConnect!" textAlignment="CENTER">
             <font>
