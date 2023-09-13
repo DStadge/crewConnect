@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           #Set Java Version
-          java-version: '19.0.2'
+          java-version: '19'
           distribution: 'adopt'
           cache: 'maven'
 
@@ -24,8 +23,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: backend.jar
-          path: backend/target/backend.jar
+          name: app.jar
+          path: backend/target/app.jar
 
   push-to-docker-hub:
     runs-on: ubuntu-latest
@@ -35,8 +34,8 @@ jobs:
 
       - uses: actions/download-artifact@v2
         with:
-          name: backend.jar
-          path: backend/target/backend.jar
+          name: app.jar
+          path: backend/target
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
@@ -49,6 +48,27 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          #Set dockerhub project (replace "sergejneuefische/javafx-student-db")
+          #Set dockerhub project (replace "bartfastiel/java-capstone-project.de-example-app")
           tags: trabidirk007/crewConnect:latest
-          context: ./backend
+          context: .
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: push-to-docker-hub
+    steps:
+      - name: Restart docker container
+        uses: appleboy/ssh-action@master
+        with:
+          host: capstone-project.de
+          #Set App Name (replace "example" with your ssh user name)
+          username: muc-java-23-1-dirk
+          password: ${{ secrets.SSH_PASSWORD }}
+          #Set App Name (replace "example" with your ssh user name)
+          #Set dockerhub project (replace "bartfastiel/java-capstone-project.de-example-app")
+          #Set IP (replace "10.0.1.99" with your ip address)
+          script: |
+            sudo docker stop muc-java-23-1-dirk
+            sudo docker rm muc-java-23-1-dirk
+            sudo docker run --pull=always --name muc-java-23-1-dirk --network capstones --ip 10.0.6.01 --detach --env MONGO_DB_URI=${{ secrets.MONGO_DB_URI }} trabidirk007/crewConnect:latest
+            sleep 15s
+            sudo docker logs muc-java-23-1-dirk
