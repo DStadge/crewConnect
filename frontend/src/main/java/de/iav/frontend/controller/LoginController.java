@@ -32,16 +32,13 @@ public class LoginController {
 
     @FXML
     private void login() {
-        if (authService.login(usernameInput.getText(), passwordInput.getText())) {
+       if (authService.login(usernameInput.getText(), passwordInput.getText())) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/main-scene.fxml"));
-
             try {
                 parent = fxmlLoader.load();
             } catch (Exception e) {
                 throw new CustomIOException(e.toString());
-
             }
-
             scene = new Scene(parent);
             stage = (Stage) usernameInput.getScene().getWindow();
             stage.setScene(scene);

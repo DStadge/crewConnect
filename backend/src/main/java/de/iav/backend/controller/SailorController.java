@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/crewconnect")
 public class SailorController {
 
 
@@ -19,31 +19,31 @@ public class SailorController {
         this.sailorService = sailorService;
     }
 
-    @GetMapping("/hello")
+ /*   @GetMapping("/hello")
     public String hello(){
-        return "Testnachricht ohne Security";
+        return "Hier bin ich im Internet zu finden!";
     }
-
-    @GetMapping("/crewconnect/sailor")
+*/
+    @GetMapping("/sailor")
     public List<Sailor> listAllSailor(){
         return sailorService.listAllSailor();
     }
 
-    @PostMapping("/crewconnect/sailor")
+    @PostMapping("/sailor")
     public Sailor addSailor(@RequestBody Sailor sailorToAdd){
         return sailorService.addSailor(sailorToAdd);
     }
 
-    @GetMapping("/crewconnect/{id}")
+    @GetMapping("/{id}")
     public Optional<Sailor> getSailorById(@PathVariable String id){
         return sailorService.getSailorById(id);
     }
-    @DeleteMapping("/crewconnect/{id}")
+    @DeleteMapping("/{id}")
     public void deleteSailorById(@PathVariable String id){
         sailorService.deleteSailorById(id);
     }
 
-    @PutMapping("/crewconnect/{id}")
+    @PutMapping("/{id}")
     public Sailor updateSailorById(@PathVariable String id, @RequestBody Sailor sailorToUpdate){
         return sailorService.updateSailorById(id, sailorToUpdate);
     }

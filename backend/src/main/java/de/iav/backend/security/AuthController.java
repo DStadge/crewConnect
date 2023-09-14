@@ -15,6 +15,7 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
+
     private final AppUserService appUserService;
 
     @PostMapping("/login")
@@ -41,7 +42,6 @@ public class AuthController {
     public String logout(HttpSession session) {
         session.invalidate();
         SecurityContextHolder.clearContext();
-        return "Erfolgreich ausgelogt!";
+        return "Du hast Dich erfolgreich ausgelogt!";
     }
 }
-

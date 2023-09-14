@@ -13,6 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AppUserService implements UserDetailsService{
+
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -34,7 +35,6 @@ public class AppUserService implements UserDetailsService{
         ) {
             throw new UserAlreadyExistException("Benutzer ist schon angelegt!");
         }
-
 
         AppUser userToSave = new AppUser(
                 null,

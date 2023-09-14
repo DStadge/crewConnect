@@ -33,7 +33,6 @@ public class AuthService {
         this.sessionId = sessionId;
     }
 
-
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
@@ -49,7 +48,6 @@ public class AuthService {
     public boolean registerAppUser(AppUserRequest appUserRequest) {
         try {
             String requestBody = objectMapper.writeValueAsString(appUserRequest);
-
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(BACKEND_AUTH_URL + "/register"))
                     .header("Content-Type", "application/json")
@@ -61,15 +59,13 @@ public class AuthService {
             if (statusCode == 201) {
                 return true;
             } else {
-                setErrorMessage("Registrierung fehlgeschlagen. / Email oder Benutzername schon eingetragen?");
+                setErrorMessage("Registrierung fehlgeschlagen. / Email und/oder Benutzername schon eingetragen!");
                 return false;
             }
         } catch (JsonProcessingException e) {
             throw new CustomJsonProcessingException("Benutzer kann nicht registriert werden!", e);
 
         }
-
-
     }
 
     public boolean login(String username, String password) {
@@ -114,4 +110,3 @@ public class AuthService {
     }
 
 }
-

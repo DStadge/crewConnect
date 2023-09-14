@@ -13,7 +13,5 @@ public record AppUser(
         String email,
         String password,
         AppUserRole role
-
-
 ) {
 }
