@@ -4,8 +4,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collation = "users")
-
 public record AppUser(
+
         String id,
         @Indexed(unique = true)
         String username,
