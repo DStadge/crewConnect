@@ -18,6 +18,11 @@ public class AuthController {
 
     private final AppUserService appUserService;
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hier ist eine Nachricht ohne Authentifizierung!";
+    }
+
     @PostMapping("/login")
     public String login(Principal principal) { //principal enthält das return von loadUserByUsername
         if (principal != null) {

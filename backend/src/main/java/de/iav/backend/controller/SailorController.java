@@ -19,11 +19,6 @@ public class SailorController {
         this.sailorService = sailorService;
     }
 
- /*   @GetMapping("/hello")
-    public String hello(){
-        return "Hier bin ich im Internet zu finden!";
-    }
-*/
     @GetMapping("/sailor")
     public List<Sailor> listAllSailor(){
         return sailorService.listAllSailor();
