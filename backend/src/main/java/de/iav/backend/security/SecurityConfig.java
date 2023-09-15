@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .authorizeHttpRequests(customizer -> customizer
                                 .requestMatchers("/api/**").permitAll()
+                                .requestMatchers("/api/crewconnect/**").permitAll()
                                 .requestMatchers("/api/auth/**").permitAll()
                         //auth/**
                               //  .requestMatchers("/api/crewconnect/**").authenticated()

@@ -45,7 +45,6 @@ public class RegisterController {
 
     @FXML
     protected void onRegisterClick() {
-      //  System.out.println("Register");
         register();
     }
 

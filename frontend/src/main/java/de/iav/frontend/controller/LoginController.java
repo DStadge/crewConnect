@@ -42,7 +42,7 @@ public class LoginController {
             scene = new Scene(parent);
             stage = (Stage) usernameInput.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Main Page");
+            stage.setTitle("Hauptseite");
         } else {
             errorLabel.setText(authService.errorMessage());
         }
@@ -63,8 +63,3 @@ public class LoginController {
         stage.setScene(scene);
     }
 }
-
-
-
-
-

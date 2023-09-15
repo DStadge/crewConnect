@@ -24,9 +24,7 @@ import java.util.ResourceBundle;
 
 public class AddSailorController implements Initializable {
 
-
     private final SailorService sailorService = SailorService.getInstance();
-
 
     @FXML
     private Button backToMainSceneButton;
@@ -81,7 +79,6 @@ public class AddSailorController implements Initializable {
         }
         sceneSwitchService.saveNewSailorSwitchToMainScene(event);
     }
-
 
     @FXML
     public void setSelectedSailor(Sailor selectedSailor) {

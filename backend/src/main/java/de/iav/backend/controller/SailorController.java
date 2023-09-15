@@ -11,9 +11,7 @@ import java.util.Optional;
 @RequestMapping("/api/crewconnect")
 public class SailorController {
 
-
     private final SailorService sailorService;
-
 
     public SailorController(SailorService sailorService) {
         this.sailorService = sailorService;
