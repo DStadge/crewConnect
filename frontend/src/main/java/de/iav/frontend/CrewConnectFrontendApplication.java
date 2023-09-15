@@ -12,7 +12,7 @@ public class CrewConnectFrontendApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Login page");
+        stage.setTitle("Login Seite");
         stage.setScene(scene);
         stage.show();
     }

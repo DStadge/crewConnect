@@ -43,4 +43,3 @@ public class SailorController {
         return sailorService.updateSailorById(id, sailorToUpdate);
     }
 }
-
