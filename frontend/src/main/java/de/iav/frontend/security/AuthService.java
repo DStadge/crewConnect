@@ -72,7 +72,7 @@ public class AuthService {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(BACKEND_AUTH_URL + "/login"))
                 .POST(HttpRequest.BodyPublishers.ofString(""))
-                .header("Authorization", "Basic " + Base64.getEncoder().encodeToString((username + ": " + password).getBytes()))
+                .header("Authorization", "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes()))
                 .build();
 
         var response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
@@ -104,7 +104,7 @@ public class AuthService {
         if (statusCode == 200) {
             return true;
         } else {
-            setErrorMessage("Login fehlgeschlagen.");
+            setErrorMessage("Logout fehlgeschlagen.");
             return false;
         }
     }

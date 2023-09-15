@@ -34,7 +34,7 @@ public class MainPageController {
     @FXML
     private TableColumn<Sailor, String> lastNameColumn;
     @FXML
-    private TableColumn<Sailor, String> expirationColumn;
+    private TableColumn<Sailor, String> experienceColumn;
     @FXML
     private TableColumn<Sailor, String> dateColumn;
 
@@ -46,7 +46,7 @@ public class MainPageController {
 
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("Vorname"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("Nachname"));
-        expirationColumn.setCellValueFactory(new PropertyValueFactory<>("Erfahrung"));
+        experienceColumn.setCellValueFactory(new PropertyValueFactory<>("Erfahrung"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("SegelDatum"));
 
         table.getItems().addAll(allSailor);

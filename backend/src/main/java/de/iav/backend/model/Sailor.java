@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public record Sailor(
 
-        @Id
+        //@Id
         String sailorId,
         String firstName,
         String lastName,

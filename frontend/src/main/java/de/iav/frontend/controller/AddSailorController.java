@@ -45,7 +45,7 @@ public class AddSailorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        experienceChoiceBox.getItems().add("Anfänger");
+        experienceChoiceBox.getItems().add("Anfaenger");
         experienceChoiceBox.getItems().add("Fortgeschritten");
         experienceChoiceBox.getItems().add("Experte");
     }
@@ -66,7 +66,8 @@ public class AddSailorController implements Initializable {
     @FXML
     public void saveNewSailorButton(ActionEvent event) throws IOException {
         if (sailorId == null) {
-            SailorWithoutId newSailor = new SailorWithoutId(firstName.getText(), lastName.getText(), experienceChoiceBox.getSelectionModel().getSelectedItem(), sailDate.getValue());
+            SailorWithoutId newSailor = new SailorWithoutId(firstName.getText(), lastName.getText(), experienceChoiceBox.getValue(), sailDate.getValue());
+            //getSelectionModel().getSelectedItem()
             sailorService.addSailor(newSailor);
         } else {
             Sailor sailorData = new Sailor(

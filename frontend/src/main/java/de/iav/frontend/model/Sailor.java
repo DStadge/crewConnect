@@ -6,7 +6,6 @@ public record Sailor(
         String sailorId,
         String firstname,
         String lastname,
-
         String experience,
         //LocalDate in JSON "YYYY-MM-DD"
         LocalDate sailDate

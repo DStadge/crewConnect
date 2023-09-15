@@ -10,4 +10,4 @@ public record SailorWithoutId (
     //LocalDate in JSON "YYYY-MM-DD"
     LocalDate sailDate
 ) {
-    }
+}
