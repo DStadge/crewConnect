@@ -29,7 +29,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/auth/**").permitAll()
                                // .requestMatchers("/api/crewconnect/**").authenticated()
                                 .anyRequest().permitAll()
-                                .anyRequest().authenticated()
+                               // .anyRequest().authenticated()
                         //.requestMatchers(HttpMethod.GET, "/api/crewconnect").authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
