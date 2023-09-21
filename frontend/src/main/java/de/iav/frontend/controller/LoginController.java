@@ -11,8 +11,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.time.LocalDate;
-
 public class LoginController {
     private Stage stage;
     private Scene scene;
@@ -38,7 +36,7 @@ public class LoginController {
             try {
                 parent = fxmlLoader.load();
             } catch (Exception e) {
-                throw new CustomIOException("myTest");
+                throw new CustomIOException(e.toString());
             }
             scene = new Scene(parent);
             stage = (Stage) usernameInput.getScene().getWindow();
@@ -62,5 +60,6 @@ public class LoginController {
         scene = new Scene(parent);
         stage = (Stage) usernameInput.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Registrierungsseite");
     }
 }

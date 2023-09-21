@@ -86,7 +86,7 @@ public class MainPageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Segler hinzufuegen");
+        stage.setTitle("Segler bearbeiten");
         stage.show();
     }
 
@@ -103,6 +103,7 @@ public class MainPageController {
         scene = new Scene(parent);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Login Seite");
     }
 }
 
