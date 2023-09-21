@@ -62,7 +62,11 @@ public class AddSailorController implements Initializable {
     @FXML
     public void saveNewSailorButton(ActionEvent event) throws IOException {
         if (sailorId == null) {
-            SailorWithoutId newSailor = new SailorWithoutId(firstName.getText(), lastName.getText(), experienceChoiceBox.getValue(), sailDate.getValue());
+            SailorWithoutId newSailor = new SailorWithoutId(
+                    firstName.getText(),
+                    lastName.getText(),
+                    experienceChoiceBox.getValue(),
+                    sailDate.getValue());
             sailorService.addSailor(newSailor);
         } else {
             Sailor sailorData = new Sailor(

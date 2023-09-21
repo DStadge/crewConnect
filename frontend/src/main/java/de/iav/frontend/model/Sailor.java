@@ -5,6 +5,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 public record Sailor(
+
         String sailorId,
         String firstName,
         String lastName,
@@ -27,6 +28,4 @@ public record Sailor(
     public LocalDate getSailDate() {
         return this.sailDate;
     }
-
-
 }
