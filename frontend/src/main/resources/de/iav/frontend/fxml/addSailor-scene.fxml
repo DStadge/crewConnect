@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.AddSailorController">
     <children>
         <Button onAction="#switchToMainScene" text="zurück">
@@ -47,7 +48,7 @@
                 <Font size="14.0" />
             </font>
         </Label>
-      <TextField fx:id="experience" />
+        <ChoiceBox fx:id="experienceChoiceBox" prefWidth="150.0" />
         <Label text="Wunschdatum">
             <VBox.margin>
                 <Insets top="15.0" />
