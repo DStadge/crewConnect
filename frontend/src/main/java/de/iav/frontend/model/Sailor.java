@@ -1,21 +1,23 @@
 package de.iav.frontend.model;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 
 public record Sailor(
         String sailorId,
-        String firstname,
-        String lastname,
+        String firstName,
+        String lastName,
         String experience,
         //LocalDate in JSON "YYYY-MM-DD"
         LocalDate sailDate
 ) {
     public String getFirstName() {
-        return this.firstname;
+        return this.firstName;
     }
 
     public String getLastName() {
-        return this.lastname;
+        return this.lastName;
     }
 
     public String getExperience() {

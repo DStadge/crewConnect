@@ -11,11 +11,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
 public class LoginController {
     private Stage stage;
     private Scene scene;
     private Parent parent;
-
     @FXML
     private TextField usernameInput;
     @FXML
@@ -37,7 +38,7 @@ public class LoginController {
             try {
                 parent = fxmlLoader.load();
             } catch (Exception e) {
-                throw new CustomIOException(e.toString());
+                throw new CustomIOException("myTest");
             }
             scene = new Scene(parent);
             stage = (Stage) usernameInput.getScene().getWindow();

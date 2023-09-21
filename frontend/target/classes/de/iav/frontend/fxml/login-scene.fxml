@@ -12,7 +12,7 @@
     <children>
         <Label text="Wilkommen zum CrewConnect!" textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="16.0" />
+                <Font name="Comic Sans MS" size="16.0" />
             </font>
             <VBox.margin>
                 <Insets bottom="25.0" top="25.0" />
@@ -23,7 +23,7 @@
         <Label text="Passwort" />
         <PasswordField fx:id="passwordInput" />
         <Label fx:id="errorLabel" />
-        <Button fx:id="loginButton" onAction="#onLoginClick" text="Login">
+        <Button onAction="#onLoginClick" text="Login">
             <VBox.margin>
                 <Insets top="20.0" />
             </VBox.margin>

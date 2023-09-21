@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.RegisterController">
+<VBox alignment="CENTER" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.RegisterController">
     <children>
         <Button mnemonicParsing="false" onAction="#onClickBackButton" text="zurueck">
             <VBox.margin>

@@ -8,22 +8,18 @@ import de.iav.frontend.model.Sailor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class AddSailorController implements Initializable {
-
+public class AddSailorController  {
+    //implements Initializable
     private final SailorService sailorService = SailorService.getInstance();
 
     @FXML
@@ -33,17 +29,18 @@ public class AddSailorController implements Initializable {
     @FXML
     private TextField lastName;
     @FXML
-    private ChoiceBox<String> experienceChoiceBox = new ChoiceBox<>();
+    private TextField experience;
+    //private ChoiceBox<String> experienceChoiceBox = new ChoiceBox<>();
     @FXML
     private DatePicker sailDate;
-    @FXML
-    private Button saveButton;
+  //  @FXML
+//    private Button saveButton;
 
     private String sailorId;
 
     private final SceneSwitchService sceneSwitchService = SceneSwitchService.getInstance();
 
-    @Override
+  /*  @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         experienceChoiceBox.getItems().add("Anfaenger");
         experienceChoiceBox.getItems().add("Fortgeschritten");
@@ -61,20 +58,21 @@ public class AddSailorController implements Initializable {
             }
         }
         return selectedIndex;
-    }
+    }*/
 
     @FXML
     public void saveNewSailorButton(ActionEvent event) throws IOException {
         if (sailorId == null) {
-            SailorWithoutId newSailor = new SailorWithoutId(firstName.getText(), lastName.getText(), experienceChoiceBox.getValue(), sailDate.getValue());
-            //getSelectionModel().getSelectedItem()
+            SailorWithoutId newSailor = new SailorWithoutId(firstName.getText(), lastName.getText(), experience.getText(), sailDate.getValue());
+            //getSelectionModel().getSelectedItem()      experienceChoiceBox.getValue()
             sailorService.addSailor(newSailor);
         } else {
             Sailor sailorData = new Sailor(
                     sailorId,
                     firstName.getText(),
                     lastName.getText(),
-                    experienceChoiceBox.getSelectionModel().getSelectedItem(),
+                    experience.getText(),
+                    //experienceChoiceBox.getSelectionModel().getSelectedItem(),
                     sailDate.getValue());
             sailorService.updateSailorById(sailorId, sailorData);
         }
@@ -84,9 +82,10 @@ public class AddSailorController implements Initializable {
     @FXML
     public void setSelectedSailor(Sailor selectedSailor) {
         this.sailorId = selectedSailor.sailorId();
-        firstName.setText(selectedSailor.firstname());
-        lastName.setText(selectedSailor.lastname());
-        experienceChoiceBox.getSelectionModel().select(getIndexOfExperienceChoiceBoxItem(experienceChoiceBox, selectedSailor));
+        firstName.setText(selectedSailor.firstName());
+        lastName.setText(selectedSailor.lastName());
+        experience.setText(selectedSailor.experience());
+        // experienceChoiceBox.getSelectionModel().select(getIndexOfExperienceChoiceBoxItem(experienceChoiceBox, selectedSailor));
         sailDate.setValue(selectedSailor.sailDate());
     }
 

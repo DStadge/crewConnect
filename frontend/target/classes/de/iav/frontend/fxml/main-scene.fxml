@@ -13,6 +13,7 @@
    </padding>
    <children>
       <HBox>
+
          <children>
             <Button mnemonicParsing="false" onAction="#switchToAddSailorScene" text="Segler hinzufuegen" />
             <Button mnemonicParsing="false" onAction="#deleteSailorById" text="Segler loeschen">
@@ -20,7 +21,7 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="updateSailorButton" mnemonicParsing="false" onAction="#switchToUpdateSailorScene" text="Segler bearbeiten">
+            <Button mnemonicParsing="false" onAction="#switchToUpdateSailorScene" text="Segler bearbeiten">
                <HBox.margin>
                   <Insets left="60.0" />
                </HBox.margin>
@@ -31,10 +32,10 @@
          <columns>
             <TableColumn fx:id="firstNameColumn" prefWidth="215.0" text="Vorname" />
             <TableColumn fx:id="lastNameColumn" prefWidth="186.0" text="Nachname" />
-            <TableColumn fx:id="expirationColumn" prefWidth="107.0" text="Segelerfahrfung" />
-            <TableColumn fx:id="dateColumn" prefWidth="191.0" text="gebuchtes Datum" />
+            <TableColumn fx:id="experienceColumn" prefWidth="107.0" text="Segelererfahrung" />
+            <TableColumn fx:id="sailDateColumn" prefWidth="191.0" text="gebuchtes Datum" />
          </columns>
       </TableView>
-      <Button mnemonicParsing="false" onAction="#logout" text="Auslogen" />
+      <Button mnemonicParsing="false" onAction="#logout" text="Ausloggen" />
    </children>
 </VBox>

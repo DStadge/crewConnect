@@ -24,7 +24,7 @@ public class SailorService {
     public static final String JSESSIONID = "JSESSIONID=";
     private final HttpClient httpClient = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String SAILOR_BASE_URL = "http://localhost:8080/api/crewConnect";
+    private static final String SAILOR_BASE_URL = "http://localhost:8080/api/crewconnect";
     private static final String HEADER_VAR = "application/json";
 
     private static SailorService instance;

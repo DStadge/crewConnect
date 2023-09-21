@@ -4,6 +4,8 @@ import de.iav.frontend.exception.CustomIOException;
 import de.iav.frontend.model.Sailor;
 import de.iav.frontend.security.AuthService;
 import de.iav.frontend.service.SailorService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +15,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainPageController {
@@ -26,7 +31,8 @@ public class MainPageController {
     private Stage stage;
     private final SailorService sailorService = SailorService.getInstance();
 
-
+    @FXML
+    public VBox tableView;
     @FXML
     private TableView<Sailor> table;
     @FXML
@@ -36,7 +42,7 @@ public class MainPageController {
     @FXML
     private TableColumn<Sailor, String> experienceColumn;
     @FXML
-    private TableColumn<Sailor, String> dateColumn;
+    private TableColumn<Sailor, LocalDate> sailDateColumn;
 
     private final AuthService authService = AuthService.getInstance();
 
@@ -44,10 +50,10 @@ public class MainPageController {
         List<Sailor> allSailor = sailorService.getSailorList();
         table.getItems().clear();
 
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("Vorname"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("Nachname"));
-        experienceColumn.setCellValueFactory(new PropertyValueFactory<>("Erfahrung"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("SegelDatum"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        experienceColumn.setCellValueFactory(new PropertyValueFactory<>("experience"));
+        sailDateColumn.setCellValueFactory(new PropertyValueFactory<>("sailDate"));
 
         table.getItems().addAll(allSailor);
     }
