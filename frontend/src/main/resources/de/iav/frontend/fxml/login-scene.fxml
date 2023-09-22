@@ -31,7 +31,10 @@
          <font>
             <Font name="Comic Sans MS" size="14.0" />
          </font></PasswordField>
-        <Label fx:id="errorLabel" />
+        <Label fx:id="errorLabel">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font></Label>
         <Button onAction="#onLoginClick" text="Login">
             <VBox.margin>
                 <Insets top="20.0" />

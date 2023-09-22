@@ -38,6 +38,7 @@ public class AddSailorController implements Initializable {
     private TextField lastName;
     @FXML
     private ChoiceBox<String> experienceChoiceBox = new ChoiceBox<>();
+
     @FXML
     private DatePicker sailDate;
 
@@ -47,6 +48,7 @@ public class AddSailorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        experienceChoiceBox.getStyleClass().add("choice-box");
         experienceChoiceBox.getItems().add("Anfaenger");
         experienceChoiceBox.getItems().add("Fortgeschritten");
         experienceChoiceBox.getItems().add("Experte");

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.LoginController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.LoginController">
     <children>
         <Label text="Wilkommen zum CrewConnect!" textAlignment="CENTER">
             <font>
@@ -31,7 +31,10 @@
          <font>
             <Font name="Comic Sans MS" size="14.0" />
          </font></PasswordField>
-        <Label fx:id="errorLabel" />
+        <Label fx:id="errorLabel">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font></Label>
         <Button onAction="#onLoginClick" text="Login">
             <VBox.margin>
                 <Insets top="20.0" />
