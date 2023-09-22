@@ -8,27 +8,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.LoginController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.LoginController">
     <children>
         <Label text="Wilkommen zum CrewConnect!" textAlignment="CENTER">
             <font>
-                <Font name="Comic Sans MS" size="16.0" />
+                <Font name="Comic Sans MS" size="28.0" />
             </font>
             <VBox.margin>
                 <Insets bottom="25.0" top="25.0" />
             </VBox.margin>
         </Label>
-        <Label text="Email" />
-        <TextField fx:id="usernameInput" />
+        <Label text="Email">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font></Label>
+        <TextField fx:id="usernameInput">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font></TextField>
         <Label text="Passwort" />
-        <PasswordField fx:id="passwordInput" />
+        <PasswordField fx:id="passwordInput">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font></PasswordField>
         <Label fx:id="errorLabel" />
         <Button onAction="#onLoginClick" text="Login">
             <VBox.margin>
                 <Insets top="20.0" />
             </VBox.margin>
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
         </Button>
-        <Button mnemonicParsing="false" onAction="#onRegisterClick" text="Registrierung" />
+        <Button mnemonicParsing="false" onAction="#onRegisterClick" text="Registrierung">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font></Button>
     </children>
    <padding>
       <Insets bottom="40.0" left="40.0" right="40.0" top="10.0" />

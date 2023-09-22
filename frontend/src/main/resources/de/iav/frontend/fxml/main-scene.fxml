@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox fx:id="tableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.MainPageController">
    <padding>
@@ -15,16 +16,25 @@
       <HBox>
 
          <children>
-            <Button mnemonicParsing="false" onAction="#switchToAddSailorScene" text="Segler hinzufuegen" />
+            <Button mnemonicParsing="false" onAction="#switchToAddSailorScene" text="Segler hinzufuegen">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font></Button>
             <Button mnemonicParsing="false" onAction="#deleteSailorById" text="Segler loeschen">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#switchToUpdateSailorScene" text="Segler bearbeiten">
                <HBox.margin>
                   <Insets left="60.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
             </Button>
          </children>
       </HBox>
@@ -36,6 +46,9 @@
             <TableColumn fx:id="sailDateColumn" prefWidth="191.0" text="gebuchtes Datum" />
          </columns>
       </TableView>
-      <Button mnemonicParsing="false" onAction="#logout" text="Ausloggen" />
+      <Button mnemonicParsing="false" onAction="#logout" text="Ausloggen">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font></Button>
    </children>
 </VBox>

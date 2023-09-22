@@ -15,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -65,8 +67,8 @@ public class AddSailorController implements Initializable {
 
     private void showCustomPopup(String title, String message) {
         Stage popupStage = new Stage();
-        popupStage.initOwner(firstName.getScene().getWindow()); // Setzen Sie das Elternfenster
-        popupStage.initModality(Modality.WINDOW_MODAL); // Stellen Sie sicher, dass es nicht-modal ist
+        popupStage.initOwner(firstName.getScene().getWindow());
+        popupStage.initModality(Modality.WINDOW_MODAL);
 
         VBox popupContent = new VBox(new Label(message));
         Scene popupScene = new Scene(popupContent, 300, 100);
@@ -75,7 +77,6 @@ public class AddSailorController implements Initializable {
         popupStage.setTitle(title);
         popupStage.show();
 
-        // Schließen Sie das Popup-Fenster nach einer Verzögerung von 2 Sekunden
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -94,24 +95,37 @@ public class AddSailorController implements Initializable {
         LocalDate sailDateValue = sailDate.getValue();
         long daysDifference = ChronoUnit.DAYS.between(currentDate, sailDateValue);
 
-        showCustomPopup("Tage bis zum Segelerlebnis", "Nur noch: " + daysDifference + " Tage bis zu  deinem Segelerlebnis.");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Tage bis zum Segelerlebnis");
+        alert.setHeaderText(null);
+
+        Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
+
+        alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
+
+        alert.setContentText("Nur noch: " + daysDifference + " Tage bis zu deinem Segelerlebnis.");
+        alert.showAndWait();
     }
 
     @FXML
     public void saveNewSailorButton(ActionEvent event) throws IOException {
-        if (sailDate.getValue().isBefore(LocalDate.now())) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warnung");
-            alert.setHeaderText("Das Datum liegt in der Vergangenheit");
-            alert.setContentText("Bitte gib ein Datum in der Zukunft ein.");
-            alert.showAndWait();
-        } else if (firstName.getText() == null || firstName.getText().isEmpty() ||
+        if (firstName.getText() == null || firstName.getText().isEmpty() ||
                 lastName.getText() == null || lastName.getText().isEmpty() ||
                 experienceChoiceBox.getValue() == null || experienceChoiceBox.getValue().isEmpty() ||
                 sailDate.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warnung");
             alert.setHeaderText("Bitte fülle alle Felder aus");
+            Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
+            alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
+            alert.showAndWait();
+        } else if (sailDate.getValue().isBefore(LocalDate.now())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warnung");
+            alert.setHeaderText("Das Datum liegt in der Vergangenheit!");
+            alert.setContentText("Bitte gib ein Datum in der Zukunft ein.");
+            Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
+            alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
             alert.showAndWait();
         } else {
             if (sailorId == null) {
