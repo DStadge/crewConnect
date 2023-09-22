@@ -34,5 +34,3 @@ build/
 /mvnw.cmd
 /mvnw
 /.mvn/
-
-application-secret.properties

@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class SailorService {
 
-    private static final Logger logger = LoggerFactory.getLogger(SailorService.class);
+   // private static final Logger logger = LoggerFactory.getLogger(SailorService.class);
 
     private final SailorRepository sailorRepository;
 
