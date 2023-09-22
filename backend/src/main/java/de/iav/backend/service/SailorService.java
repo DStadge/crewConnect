@@ -22,25 +22,25 @@ public class SailorService {
     }
 
     public List<Sailor> listAllSailor(){
-        logger.info("List all sailors");
-        logger.debug("List all sailors");
+      //  logger.info("List all sailors");
+      //  logger.debug("List all sailors");
         return sailorRepository.findAll();
     }
 
     public Sailor addSailor(Sailor sailorToAdd){
 
-        logger.info("Add sailor");
+      //  logger.info("Add sailor");
         return sailorRepository.save(sailorToAdd);
     }
 
     public Optional<Sailor> getSailorById(String sailorId){
 
-        logger.info("Get sailor by id");
+      //  logger.info("Get sailor by id");
         return sailorRepository.findById(sailorId);
     }
     public void deleteSailorById(String sailorId){
 
-        logger.info("Delete sailor by id");
+      //  logger.info("Delete sailor by id");
         sailorRepository.deleteById(sailorId);
     }
     public Sailor updateSailorById(String id, Sailor sailorToUpdate){
