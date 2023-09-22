@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.iav.frontend.exception.CustomJsonProcessingException;
 
+
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -17,7 +19,10 @@ public class AuthService {
     private static AuthService instance;
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String BACKEND_AUTH_URL = "http://localhost:8080/api/auth";
+   // @Value("${auth.uri}")
+    private String BACKEND_AUTH_URL="https://muc-java-23-1-dirk.capstone-project.de/api/auth";
+    //https://muc-java-23-1-dirk.capstone-project.de/api/auth
+    //http://localhost:8080/api/auth
 
     private AuthService() {
     }

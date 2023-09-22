@@ -57,7 +57,7 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <DatePicker fx:id="sailDate" />
+        <DatePicker fx:id="sailDate" showWeekNumbers="false"/>
         <HBox prefHeight="100.0" prefWidth="200.0">
             <Button onAction="#saveNewSailorButton" prefHeight="25.0" prefWidth="343.0" text="Speichern und zurück">
                 <HBox.margin>
