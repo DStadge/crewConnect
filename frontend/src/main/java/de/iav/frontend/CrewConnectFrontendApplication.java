@@ -16,6 +16,10 @@ public class CrewConnectFrontendApplication extends Application {
         stage.setTitle("Login Seite");
         stage.setScene(scene);
         stage.show();
+        stage.setMinWidth(780);
+        stage.setMaxWidth(780);
+        stage.setMinHeight(780);
+        stage.setMaxHeight(780);
 
     }
 

@@ -29,7 +29,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
 public class AddSailorController implements Initializable {
-    //
     private final SailorService sailorService = SailorService.getInstance();
 
     @FXML
@@ -48,7 +47,6 @@ public class AddSailorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        experienceChoiceBox.getStyleClass().add("choice-box");
         experienceChoiceBox.getItems().add("Anfaenger");
         experienceChoiceBox.getItems().add("Fortgeschritten");
         experienceChoiceBox.getItems().add("Experte");
@@ -102,9 +100,7 @@ public class AddSailorController implements Initializable {
         alert.setHeaderText(null);
 
         Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
-
         alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
-
         alert.setContentText("Nur noch: " + daysDifference + " Tage bis zu deinem Segelerlebnis.");
         alert.showAndWait();
     }
