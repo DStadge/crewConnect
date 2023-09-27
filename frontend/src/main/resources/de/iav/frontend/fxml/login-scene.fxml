@@ -48,7 +48,8 @@
         <Button mnemonicParsing="false" onAction="#onRegisterClick" text="Registrierung">
          <font>
             <Font name="Comic Sans MS" size="14.0" />
-         </font></Button>
+         </font>
+        </Button>
         <ImageView fitHeight="352.0" fitWidth="703.0">
             <image>
                 <Image url="@../jpeg/sea.png" />
