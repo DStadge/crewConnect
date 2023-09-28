@@ -28,14 +28,14 @@ class AuthControllerTest {
     }
 
     @Test
-    public void testHello() throws Exception {
+    void testHello() throws Exception {
         mockMvc.perform(get("/api/auth/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hier ist eine Nachricht ohne Authentifizierung!"));
     }
 
     @Test
-    public void testLoginAuthenticated() throws Exception {
+    void testLoginAuthenticated() throws Exception {
         String username = "testuser";
         mockMvc.perform(post("/api/auth/login")
                         .principal(() -> username))
@@ -44,16 +44,16 @@ class AuthControllerTest {
     }
 
     @Test
-    public void testLoginUnauthenticated() throws Exception {
+    void testLoginUnauthenticated() throws Exception {
         mockMvc.perform(post("/api/auth/login"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("unbekannter Benutzer"));
     }
 
     @Test
-    public void testRegister() throws Exception {
-        AppUserRequest appUserRequest = new AppUserRequest("newuser", "newuser@example.com", "password");
-        AppUserResponse appUserResponse = new AppUserResponse("newuser", "newuser", "newuser@example.com", AppUserRole.USER);
+    void testRegister() throws Exception {
+        AppUserRequest appUserRequest = new AppUserRequest("newuser", "newuser@iav.com", "password");
+        AppUserResponse appUserResponse = new AppUserResponse("newuser", "newuser", "newuser@iav.com", AppUserRole.USER);
 
         Mockito.when(authController.getAppUserService().createUser(appUserRequest)).thenReturn(appUserResponse);
 
@@ -66,7 +66,7 @@ class AuthControllerTest {
 
     @Test
     void testRegisterUserAlreadyExists() throws Exception {
-        AppUserRequest appUserRequest = new AppUserRequest("existinguser", "test@test.de","1234");
+        AppUserRequest appUserRequest = new AppUserRequest("existinguser", "test@iav.de","1234");
         UserAlreadyExistException exception = new UserAlreadyExistException("Benutzer existiert bereits");
 
         Mockito.when(authController.getAppUserService().createUser(appUserRequest)).thenThrow(exception);

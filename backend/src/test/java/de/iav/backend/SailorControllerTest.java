@@ -46,7 +46,7 @@ class SailorControllerTest {
 
     @Test
     void testAddSailor() throws Exception {
-        Sailor sailorToAdd = new Sailor("3", "Paul", "Panze", "experte", LocalDate.of(2023, 9, 22));
+        Sailor sailorToAdd = new Sailor("3", "Paul", "Panzer", "experte", LocalDate.of(2023, 9, 22));
 
         when(sailorService.addSailor(sailorToAdd)).thenReturn(sailorToAdd);
 
