@@ -3,7 +3,6 @@ package de.iav.backend;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.iav.backend.model.Sailor;
 import de.iav.backend.service.SailorService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ import java.util.Optional;
 @SpringBootTest
 @AutoConfigureMockMvc
 @WithMockUser
-public class SailorControllerTest {
+class SailorControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -87,7 +86,7 @@ public class SailorControllerTest {
     }
 
     @Test
-    public void deleteSailorById() throws Exception {
+    void deleteSailorById() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/crewconnect/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -107,6 +106,3 @@ public class SailorControllerTest {
                 .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(updatedSailor)));
     }
 }
-
-
-
