@@ -2,6 +2,7 @@ package de.iav.backend;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.iav.backend.model.Sailor;
+import de.iav.backend.repository.SailorRepository;
 import de.iav.backend.service.SailorService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -18,7 +19,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -32,7 +37,10 @@ class SailorControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
+    @Autowired
     private SailorService sailorService;
+    @MockBean
+    private SailorRepository sailorRepository;
 
     private List<Sailor> sailorList;
 
@@ -40,7 +48,7 @@ class SailorControllerTest {
     void testAddSailor() throws Exception {
         Sailor sailorToAdd = new Sailor("3", "Paul", "Panze", "experte", LocalDate.of(2023, 9, 22));
 
-        Mockito.when(sailorService.addSailor(sailorToAdd)).thenReturn(sailorToAdd);
+        when(sailorService.addSailor(sailorToAdd)).thenReturn(sailorToAdd);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/crewconnect/sailor")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -59,7 +67,7 @@ class SailorControllerTest {
         sailorList.add(sailor2);
 
         // Definieren Sie das erwartete Verhalten Ihres Mocked SailorService
-        Mockito.when(sailorService.listAllSailor()).thenReturn(sailorList);
+        when(sailorService.listAllSailor()).thenReturn(sailorList);
 
         // Führen Sie den Controller-Test durch
         mockMvc.perform(MockMvcRequestBuilders.get("/api/crewconnect/sailor"))
@@ -76,7 +84,7 @@ class SailorControllerTest {
         Sailor expectedSailor = new Sailor("1", "Max", "Mustermann", "Erfahren", LocalDate.of(2022, 1, 1));
 
         // Definieren Sie das erwartete Verhalten Ihres Mocked SailorService
-        Mockito.when(sailorService.getSailorById("1")).thenReturn(Optional.of(expectedSailor));
+        when(sailorService.getSailorById("1")).thenReturn(Optional.of(expectedSailor));
 
         // Führen Sie den Controller-Test durch, um einen Seemann nach ID abzurufen
         mockMvc.perform(MockMvcRequestBuilders.get("/api/crewconnect/1"))
@@ -96,7 +104,7 @@ class SailorControllerTest {
     void updateSailorById() throws Exception {
         Sailor updatedSailor = new Sailor("1", "NeuerVorname", "NeuerNachname", "NeueErfahrung", LocalDate.of(2023, 9, 22));
 
-        Mockito.when(sailorService.updateSailorById("1", updatedSailor)).thenReturn(updatedSailor);
+        when(sailorService.updateSailorById("1", updatedSailor)).thenReturn(updatedSailor);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/crewconnect/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -105,4 +113,14 @@ class SailorControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(updatedSailor)));
     }
+
+    /*
+    @Test
+    void testUpdateSailorById_NotFound() {
+        // Definieren Sie das erwartete Verhalten des SailorRepository, wenn der Sailor nicht gefunden wird
+        when(sailorRepository.findById("1")).thenReturn(Optional.empty());
+
+        // Rufen Sie die Methode im Service auf, um einen nicht vorhandenen Seemann nach ID zu aktualisieren
+        assertThrows(NoSuchElementException.class, () -> sailorService.updateSailorById("1", new Sailor("1", "Paul", "Panzer", "gut", LocalDate.of(2023, 9, 22))));
+    }*/
 }

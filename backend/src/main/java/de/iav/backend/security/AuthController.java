@@ -18,6 +18,10 @@ public class AuthController {
 
     private final AppUserService appUserService;
 
+    public AppUserService getAppUserService() {
+        return appUserService;
+    }
+
     @GetMapping("/hello")
     public String hello() {
         return "Hier ist eine Nachricht ohne Authentifizierung!";
