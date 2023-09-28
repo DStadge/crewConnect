@@ -11,6 +11,4 @@ class CrewConnectBackendTests {
         void contextLoads() {
             assertThat(true).isTrue();
         }
-
 }
-
