@@ -14,7 +14,6 @@
    </padding>
    <children>
       <HBox>
-
          <children>
             <Button mnemonicParsing="false" onAction="#switchToAddSailorScene" text="Segler hinzufuegen">
                <font>
