@@ -89,6 +89,11 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.70</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
