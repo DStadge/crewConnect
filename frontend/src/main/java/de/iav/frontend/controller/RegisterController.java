@@ -10,10 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,28 +51,41 @@ public class RegisterController {
     private final AuthService authService = AuthService.getInstance();
 
     public void register() {
-
-        AppUserRequest appUserRequest = new AppUserRequest(
-                usernameInput.getText(),
-                emailInput.getText(),
-                passwordInput.getText()
-        );
-
-        if (authService.registerAppUser(appUserRequest)) {
-            FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
-            Parent root = null;
-            try {
-                root = fxmlLoader.load();
-            } catch (IOException e) {
-                throw new CustomIOException(e.toString());
-            }
-
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) emailInput.getScene().getWindow();
-            stage.setScene(scene);
-
+        if (usernameInput.getText().isEmpty() || emailInput.getText().isEmpty() || passwordInput.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warnung");
+            alert.setHeaderText("Bitte fülle alle Felder aus");
+            Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
+            alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
+            alert.showAndWait();
         } else {
-            errorLabel.setText(authService.errorMessage());
+            AppUserRequest appUserRequest = new AppUserRequest(
+                    usernameInput.getText(),
+                    emailInput.getText(),
+                    passwordInput.getText()
+            );
+
+            if (authService.registerAppUser(appUserRequest)) {
+                FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+                Parent root = null;
+                try {
+                    root = fxmlLoader.load();
+                } catch (IOException e) {
+                    throw new CustomIOException(e.toString());
+                }
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) emailInput.getScene().getWindow();
+                stage.setScene(scene);
+
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warnung");
+                alert.setHeaderText(authService.errorMessage());
+                Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
+                alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
+                alert.showAndWait();
+            }
         }
     }
 }
