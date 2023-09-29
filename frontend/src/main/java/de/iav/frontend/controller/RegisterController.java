@@ -61,7 +61,6 @@ public class RegisterController {
             alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
             alert.showAndWait();
         } else {
-            // Überprüfen, ob die E-Mail-Adresse gültig ist
             String email = emailInput.getText();
             if (!isValidEmail(email)) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -70,7 +69,7 @@ public class RegisterController {
                 Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
                 alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
                 alert.showAndWait();
-                return; // Stoppe die Registrierung, wenn die E-Mail ungültig ist
+                return;
             }
 
             AppUserRequest appUserRequest = new AppUserRequest(
@@ -102,7 +101,6 @@ public class RegisterController {
         }
     }
 
-    // Funktion zur Überprüfung der E-Mail-Adresse mithilfe eines regulären Ausdrucks
     private boolean isValidEmail(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         Pattern pattern = Pattern.compile(emailRegex);
