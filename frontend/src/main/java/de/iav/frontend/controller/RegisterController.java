@@ -16,6 +16,8 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterController {
     @FXML
@@ -59,9 +61,21 @@ public class RegisterController {
             alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
             alert.showAndWait();
         } else {
+            // Überprüfen, ob die E-Mail-Adresse gültig ist
+            String email = emailInput.getText();
+            if (!isValidEmail(email)) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warnung");
+                alert.setHeaderText("Ungültige E-Mail-Adresse");
+                Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
+                alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
+                alert.showAndWait();
+                return; // Stoppe die Registrierung, wenn die E-Mail ungültig ist
+            }
+
             AppUserRequest appUserRequest = new AppUserRequest(
                     usernameInput.getText(),
-                    emailInput.getText(),
+                    email,
                     passwordInput.getText()
             );
 
@@ -77,7 +91,6 @@ public class RegisterController {
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) emailInput.getScene().getWindow();
                 stage.setScene(scene);
-
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warnung");
@@ -88,5 +101,12 @@ public class RegisterController {
             }
         }
     }
-}
 
+    // Funktion zur Überprüfung der E-Mail-Adresse mithilfe eines regulären Ausdrucks
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+}

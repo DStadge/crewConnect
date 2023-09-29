@@ -60,12 +60,16 @@
                   <Font name="Comic Sans MS" size="13.0" />
                </font>
             </PasswordField>
-            <Button mnemonicParsing="false" onAction="#onRegisterClick" prefHeight="27.0" prefWidth="268.0" text="Jetzt Registrieren" translateX="10.0" translateY="400.0">
+            <Button mnemonicParsing="false" onAction="#onRegisterClick" prefHeight="27.0" prefWidth="268.0" text="Jetzt Registrieren" translateX="10.0" translateY="350.0">
                <font>
                   <Font name="Comic Sans MS" size="13.0" />
                </font>
             </Button>
-            <Label fx:id="errorLabel" />
+            <Label fx:id="errorLabel" prefHeight="34.0" prefWidth="393.0" translateX="10.0" translateY="250.0">
+               <font>
+                  <Font name="Comic Sans MS" size="10.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
       <ImageView fitHeight="732.0" fitWidth="365.0" translateX="-10.0" translateY="10.0">
