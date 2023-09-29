@@ -28,7 +28,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(Principal principal) { //principal enthält das return von loadUserByUsername
+    public String login(Principal principal) {
         if (principal != null) {
             return principal.getName();
         }

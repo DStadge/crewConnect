@@ -64,7 +64,7 @@ public class AddSailorController implements Initializable {
         }
         return selectedIndex;
     }
-
+/*
     private void showCustomPopup(String title, String message) {
         Stage popupStage = new Stage();
         popupStage.initOwner(firstName.getScene().getWindow());
@@ -88,7 +88,7 @@ public class AddSailorController implements Initializable {
                 },
                 8000
         );
-    }
+    }*/
 
     public void popup(){
         LocalDate currentDate = LocalDate.now();
@@ -101,6 +101,11 @@ public class AddSailorController implements Initializable {
 
         Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
         alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
+        if (daysDifference == 0) {
+            alert.setContentText("Heute ist dein Segelerlebnis! Viel Spaß dabei!");
+        } else if (daysDifference == 1) {
+            alert.setContentText("Viel Spaß für Dein Segelerlebnis morgen!");
+        } else
         alert.setContentText("Nur noch: " + daysDifference + " Tage bis zu deinem Segelerlebnis.");
         alert.showAndWait();
     }

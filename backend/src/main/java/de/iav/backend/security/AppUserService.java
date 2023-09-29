@@ -19,7 +19,7 @@ public class AppUserService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { //nachfolgend ist es immer "username" egal ob username oder email
-        AppUser appUser = appUserRepository.findByEmail(username)//.findByUsername(username)
+        AppUser appUser = appUserRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Benutzer nicht gefunden! "));
         return User.builder()
                 .username(appUser.username())
