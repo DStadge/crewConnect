@@ -48,7 +48,7 @@ public class SailorService {
         if (existingSailor.isPresent()) {
             return sailorRepository.save(sailorToUpdate);
         }
-        throw new NoSuchElementException("Sailor with ID: " + id + " not found!");
+        throw new NoSuchElementException("Sailor mit der ID: " + id + " wurde nicht gefunden!");
 
     }
 }
