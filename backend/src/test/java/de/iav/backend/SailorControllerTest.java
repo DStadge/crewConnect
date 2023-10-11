@@ -1,6 +1,7 @@
 package de.iav.backend;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.iav.backend.model.Boat;
 import de.iav.backend.model.Sailor;
 import de.iav.backend.service.SailorService;
 import org.junit.jupiter.api.Test;
@@ -36,8 +37,19 @@ class SailorControllerTest {
 
     @Test
     void testAddSailor() throws Exception {
-        Sailor sailorToAdd = new Sailor("3", "Paul", "Panzer", "experte", LocalDate.of(2023, 9, 22));
+        // Erstelle ein gültiges Boat-Objekt
+        Boat boat = new Boat("BoatName", "BoatType");
 
+        Sailor sailorToAdd = new Sailor(
+                "3",
+                "Paul",
+                "Panzer",
+                "experte",
+                LocalDate.of(2023, 9, 22),
+                boat
+        );
+
+        // Wenn sailorService.addSailor aufgerufen wird, geben wir sailorToAdd zurück.
         when(sailorService.addSailor(sailorToAdd)).thenReturn(sailorToAdd);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/crewconnect/sailor")
@@ -48,11 +60,23 @@ class SailorControllerTest {
                 .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(sailorToAdd)));
     }
 
+
     @Test
     void getAllSailor() throws Exception {
         List<Sailor> sailorList = new ArrayList<>();
-        Sailor sailor1 = new Sailor("1", "Paul", "Panzer", "gut", LocalDate.of(2022, 1, 1));
-        Sailor sailor2 = new Sailor("2", "Paulina", "Panzer2", "experte", LocalDate.of(2023, 2, 15));
+        Sailor sailor1 = new Sailor("1", "Paul",
+                "Panzer",
+                "gut",
+                LocalDate.of(2022, 1, 1),
+                new Boat("Pinta", "SV"));
+        Sailor sailor2 = new Sailor("2",
+                "Paulina",
+                "Panzer2",
+                "experte",
+                LocalDate.of(2023,
+                        2,
+                        15),
+                new Boat("Pinta", "SV"));
         sailorList.add(sailor1);
         sailorList.add(sailor2);
 
@@ -69,7 +93,12 @@ class SailorControllerTest {
     @Test
     void getSailorById() throws Exception {
         // Erstellen Sie einen Dummy-Sailor mit einer bestimmten ID, den Ihr Mocked SailorService zurückgeben wird
-        Sailor expectedSailor = new Sailor("1", "Max", "Mustermann", "Erfahren", LocalDate.of(2022, 1, 1));
+        Sailor expectedSailor = new Sailor("1",
+                "Max",
+                "Mustermann",
+                "Erfahren",
+                LocalDate.of(2022, 1, 1),
+                new Boat("Pinta", "SV"));
 
         // Definieren Sie das erwartete Verhalten Ihres Mocked SailorService
         when(sailorService.getSailorById("1")).thenReturn(Optional.of(expectedSailor));
@@ -90,7 +119,11 @@ class SailorControllerTest {
 
     @Test
     void updateSailorById() throws Exception {
-        Sailor updatedSailor = new Sailor("1", "NeuerVorname", "NeuerNachname", "NeueErfahrung", LocalDate.of(2023, 9, 22));
+        Sailor updatedSailor = new Sailor("1",
+                "NeuerVorname",
+                "NeuerNachname",
+                "NeueErfahrung", LocalDate.of(2023, 9, 22),
+        new Boat("Pinta", "SV"));
 
         when(sailorService.updateSailorById("1", updatedSailor)).thenReturn(updatedSailor);
 
