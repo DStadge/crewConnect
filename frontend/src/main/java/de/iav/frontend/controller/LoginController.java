@@ -24,15 +24,15 @@ public class LoginController {
 
     private final AuthService authService = AuthService.getInstance();
 
-    @FXML
+   /* @FXML
     protected void onLoginClick() {
         login();
-    }
+    }*/
 
     @FXML
-    private void login() {
+    private void onLoginClick() {
        if (authService.login(usernameInput.getText(), passwordInput.getText())) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/main-scene.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/AddBoat-Scene.fxml"));
             try {
                 parent = fxmlLoader.load();
             } catch (Exception e) {
@@ -49,7 +49,7 @@ public class LoginController {
 
     @FXML
     protected void onRegisterClick() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/register-scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Register-Scene.fxml"));
 
         try {
             parent = fxmlLoader.load();

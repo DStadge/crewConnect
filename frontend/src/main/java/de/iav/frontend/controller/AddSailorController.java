@@ -1,7 +1,9 @@
 package de.iav.frontend.controller;
 
 
+import de.iav.frontend.model.Boat;
 import de.iav.frontend.model.SailorWithoutId;
+import de.iav.frontend.service.BoatService;
 import de.iav.frontend.service.SailorService;
 import de.iav.frontend.service.SceneSwitchService;
 import de.iav.frontend.model.Sailor;
@@ -21,9 +23,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddSailorController implements Initializable {
+
+    @FXML
+    private ComboBox<Boat> boatComboBox; // ComboBox zur Auswahl eines Boots
 
     private static final String FONT_NAME = "Comic Sans MS";
     private static final Font customFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
@@ -34,6 +40,7 @@ public class AddSailorController implements Initializable {
     }
 
     private final SailorService sailorService = SailorService.getInstance();
+    private final BoatService boatService = BoatService.getInstance();
 
     @FXML
     private TextField firstName;
@@ -54,6 +61,9 @@ public class AddSailorController implements Initializable {
         experienceChoiceBox.getItems().add("Anfaenger");
         experienceChoiceBox.getItems().add("Fortgeschritten");
         experienceChoiceBox.getItems().add("Experte");
+
+        List<Boat> availableBoats = boatService.getBoatList();
+        boatComboBox.getItems().addAll(availableBoats);
     }
 
     public int getIndexOfExperienceChoiceBoxItem(ChoiceBox<String> choiceBox, Sailor sailorToUpdate) {
@@ -86,23 +96,6 @@ public class AddSailorController implements Initializable {
             alert.setContentText("Nur noch: " + daysDifference + " Tage bis zu deinem Segelerlebnis.");
         }
         alert.showAndWait();
-
-
-        /*
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Tage bis zum Segelerlebnis");
-        alert.setHeaderText(null);
-        customFont.getSize();
-        //  Font customFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
-        alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
-        if (daysDifference == 0) {
-            alert.setContentText("Heute ist dein Segelerlebnis! Viel Spaß dabei!");
-        } else if (daysDifference == 1) {
-            alert.setContentText("Viel Spaß für Dein Segelerlebnis morgen!");
-        } else {
-            alert.setContentText("Nur noch: " + daysDifference + " Tage bis zu deinem Segelerlebnis.");
-        }
-        alert.showAndWait();*/
     }
 
     @FXML
@@ -115,7 +108,6 @@ public class AddSailorController implements Initializable {
             alert.setTitle("Warnung");
             alert.setHeaderText("Bitte fülle alle Felder aus");
             customFont.getSize();
-           // Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
             alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
             alert.showAndWait();
         } else if (sailDate.getValue().isBefore(LocalDate.now())) {
@@ -124,8 +116,7 @@ public class AddSailorController implements Initializable {
             alert.setHeaderText("Das Datum liegt in der Vergangenheit!");
             alert.setContentText("Bitte gib ein Datum in der Zukunft ein.");
             customFont.getSize();
-           // Font customFont = Font.font("Comic Sans MS", FontWeight.BOLD, 16);
-           // alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px 'Comic Sans MS';");
+            alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
             alert.showAndWait();
         } else {
             if (sailorId == null) {
@@ -133,7 +124,8 @@ public class AddSailorController implements Initializable {
                         firstName.getText(),
                         lastName.getText(),
                         experienceChoiceBox.getValue(),
-                        sailDate.getValue());
+                        sailDate.getValue(),
+                        boatComboBox.getValue());
                 sailorService.addSailor(newSailor);
                 popup();
             } else {
@@ -142,7 +134,10 @@ public class AddSailorController implements Initializable {
                         firstName.getText(),
                         lastName.getText(),
                         experienceChoiceBox.getSelectionModel().getSelectedItem(),
-                        sailDate.getValue());
+                        sailDate.getValue(),
+                        boatComboBox.getValue()
+                );
+
                 sailorService.updateSailorById(sailorId, sailorData);
                 popup();
             }
@@ -161,7 +156,7 @@ public class AddSailorController implements Initializable {
 
     @FXML
     protected void switchToMainScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/main-scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Main-Scene.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

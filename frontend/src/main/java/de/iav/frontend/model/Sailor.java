@@ -10,7 +10,8 @@ public record Sailor(
         String firstName,
         String lastName,
         String experience,
-        LocalDate sailDate
+        LocalDate sailDate,
+        Boat boat
 ) {
     public String getFirstName() {
         return this.firstName;
@@ -27,4 +28,5 @@ public record Sailor(
     public LocalDate getSailDate() {
         return this.sailDate;
     }
+    public Boat getBoat() { return this.boat; }
 }

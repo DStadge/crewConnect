@@ -32,7 +32,6 @@ class SailorServiceTest {
     }
     @Test
     void testUpdateSailorById() {
-        // Mocking data
         String sailorId = "123";
         Sailor existingSailor = new Sailor(
                 sailorId, "Paul", "Panzer", "Experte", LocalDate.of(2023, 10, 13),
@@ -69,6 +68,6 @@ class SailorServiceTest {
         assertThrows(NoSuchElementException.class, () -> sailorService.updateSailorById(sailorId, updatedSailor));
 
         Mockito.verify(sailorRepository, Mockito.times(1)).findById(sailorId);
-        Mockito.verify(sailorRepository, Mockito.never()).save(updatedSailor); // The save method should not be called
+        Mockito.verify(sailorRepository, Mockito.never()).save(updatedSailor);
     }
 }

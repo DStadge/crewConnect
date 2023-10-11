@@ -22,7 +22,6 @@ public class AddBoatController implements Initializable {
     private TextField boatName;
     @FXML
     private TextField boatType;
-
     private Boat boat;
 
     private final SceneSwitchService sceneSwitchService = SceneSwitchService.getInstance();
@@ -30,14 +29,14 @@ public class AddBoatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-/*
+
     public void saveNewBoatButton(Boat boat) {
         this.boat = boat;
         if (boat != null) {
             boatName.setText(boat.boatName());
             boatType.setText(boat.boatType());
         }
-    }*/
+    }
 
     @FXML
     public void saveNewBoatButton(ActionEvent event) {
@@ -47,7 +46,7 @@ public class AddBoatController implements Initializable {
             boat = new Boat(boat.boatName(), boat.boatType());
         }
        // switchToMainScene(event);
-       closeBoatWindow(event);
+      // closeBoatWindow(event);
     }
 
     /*
@@ -64,7 +63,7 @@ public class AddBoatController implements Initializable {
 
     @FXML
     protected void switchToMainScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/main-scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Main-Scene.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

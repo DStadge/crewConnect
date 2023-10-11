@@ -41,11 +41,11 @@ public class BoatService {
     public List<Boat> getBoatList() {
         HttpRequest request = HttpRequest.newBuilder().header(COOKIE, JSESSIONID + AuthService.getInstance().sessionId())
                 .GET()
-                .uri(URI.create(BOAT_BASE_URL + "/boat")) // Passen Sie den Endpunkt an
+                .uri(URI.create(BOAT_BASE_URL + "/boat"))
                 .build();
         return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
-                .thenApply(this::mapToBoatList) // Diese Methode sollte in Ihrem BoatService implementiert sein
+                .thenApply(this::mapToBoatList)
                 .join();
     }
 
@@ -54,8 +54,7 @@ public class BoatService {
             return objectMapper.readValue(json, new TypeReference<>() {
             });
         } catch (JsonProcessingException e) {
-            throw new CustomJsonProcessingException("Fehler beim Konvertieren der Bootliste", e);
+            throw new CustomJsonProcessingException("Fehler beim Anzeigen der Bootsliste", e);
         }
     }
 }
-

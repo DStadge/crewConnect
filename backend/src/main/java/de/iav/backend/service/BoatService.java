@@ -37,6 +37,6 @@ public class BoatService {
         if (existingBoat.isPresent()) {
             return boatRepository.save(boatToUpdate);
         }
-        throw new NoSuchElementException("Boat mit der ID: " + id + " nicht gefunden");
+        throw new NoSuchElementException("Boot mit der ID: " + id + " nicht gefunden");
     }
 }

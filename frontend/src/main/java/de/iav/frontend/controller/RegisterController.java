@@ -4,7 +4,6 @@ import de.iav.frontend.CrewConnectFrontendApplication;
 import de.iav.frontend.exception.CustomIOException;
 import de.iav.frontend.security.AppUserRequest;
 import de.iav.frontend.security.AuthService;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -35,7 +33,7 @@ public class RegisterController {
     @FXML
     protected void onClickBackButton(ActionEvent event) {
         // Erstelle einen FXMLLoader, um die FXML-Datei für die Login-Szene zu laden
-        FXMLLoader loader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/Login-Scene.fxml"));
         Parent root;
         try {
             // Lade die FXML-Datei und erstelle ein Parent-Objekt daraus
@@ -75,7 +73,7 @@ public class RegisterController {
 
     @FXML
     protected void onClickBackButton(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/Login-Scene.fxml"));
         Parent root;
         try {
             root = loader.load();
@@ -123,7 +121,7 @@ public class RegisterController {
             );
 
             if (authService.registerAppUser(appUserRequest)) {
-                FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(CrewConnectFrontendApplication.class.getResource("/de/iav/frontend/fxml/Login-Scene.fxml"));
                 Parent root = null;
                 try {
                     root = fxmlLoader.load();

@@ -4,8 +4,6 @@ import de.iav.frontend.exception.CustomIOException;
 import de.iav.frontend.model.Sailor;
 import de.iav.frontend.security.AuthService;
 import de.iav.frontend.service.SailorService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +18,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainPageController {
@@ -60,7 +56,7 @@ public class MainPageController {
 
     @FXML
     public void switchToAddSailorScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/addSailor-scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/AddSailor-Scene.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -76,7 +72,7 @@ public class MainPageController {
 
     @FXML
     public void switchToUpdateSailorScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/addSailor-scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/AddSailor-Scene.fxml"));
         root = loader.load();
 
         Sailor sailorToUpdate = table.getSelectionModel().getSelectedItem();
@@ -93,7 +89,7 @@ public class MainPageController {
     @FXML
     private void logout(ActionEvent event) {
         authService.logout();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/login-scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Login-Scene.fxml"));
         Parent parent;
         try {
             parent = fxmlLoader.load();
@@ -108,13 +104,15 @@ public class MainPageController {
 
     @FXML
     public void switchToUpdateBoatScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/addSailor-scene.fxml"));
+        System.out.println("switchToUpdateBoatScene");
+        /*
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/AddBoat-Scene.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Boot hinzufuegen");
         stage.show();
-    }
+    }*/}
 }
 
