@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BoatRepository extends MongoRepository<Boat, String> {
-    // Sie können hier benutzerdefinierte Abfrage-Methoden hinzufügen, wenn benötigt
 }

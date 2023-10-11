@@ -10,7 +10,6 @@ public record Sailor(
         String firstName,
         String lastName,
         String experience,
-        //LocalDate in JSON "YYYY-MM-DD"
         LocalDate sailDate
 ) {
     public String getFirstName() {

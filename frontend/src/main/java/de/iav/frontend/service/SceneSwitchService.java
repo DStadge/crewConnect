@@ -35,4 +35,13 @@ public class SceneSwitchService {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void saveNewBoatSwitchToMainScene(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/main-scene.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
