@@ -105,5 +105,16 @@ public class MainPageController {
         stage.setScene(scene);
         stage.setTitle("Login Seite");
     }
+
+    @FXML
+    public void switchToUpdateBoatScene(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/addSailor-scene.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Boot hinzufuegen");
+        stage.show();
+    }
 }
 
