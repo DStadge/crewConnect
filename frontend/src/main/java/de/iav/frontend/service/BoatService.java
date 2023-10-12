@@ -15,6 +15,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BoatService {
@@ -26,6 +27,8 @@ public class BoatService {
     private static final String HEADER_VAR = "application/json";
 
     private static BoatService instance;
+
+    private List<Boat> boatList = new ArrayList<>();
 
     public BoatService() {
         objectMapper.registerModule(new JavaTimeModule());
@@ -56,5 +59,14 @@ public class BoatService {
         } catch (JsonProcessingException e) {
             throw new CustomJsonProcessingException("Fehler beim Anzeigen der Bootsliste", e);
         }
+    }
+
+    public void saveBoat(Boat newBoat) {
+        List<Boat> currentBoatList = getBoatList();
+        if (currentBoatList == null) {
+            currentBoatList = new ArrayList<>(); // Erstelle eine neue Liste, wenn die Rückgabe null ist
+        }
+        currentBoatList.add(newBoat);
+        this.boatList = currentBoatList;
     }
 }

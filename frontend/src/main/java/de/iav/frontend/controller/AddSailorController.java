@@ -28,9 +28,6 @@ import java.util.ResourceBundle;
 
 public class AddSailorController implements Initializable {
 
-    @FXML
-    private ComboBox<Boat> boatComboBox; // ComboBox zur Auswahl eines Boots
-
     private static final String FONT_NAME = "Comic Sans MS";
     private static final Font customFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
 
@@ -42,6 +39,9 @@ public class AddSailorController implements Initializable {
     private final SailorService sailorService = SailorService.getInstance();
     private final BoatService boatService = BoatService.getInstance();
 
+
+    @FXML
+    private ComboBox<Boat> boatComboBox;
     @FXML
     private TextField firstName;
     @FXML
@@ -63,6 +63,7 @@ public class AddSailorController implements Initializable {
         experienceChoiceBox.getItems().add("Experte");
 
         List<Boat> availableBoats = boatService.getBoatList();
+        System.out.println("Available boats count: " + availableBoats.size());
         boatComboBox.getItems().addAll(availableBoats);
     }
 
