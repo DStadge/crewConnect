@@ -1,6 +1,7 @@
 package de.iav.frontend.controller;
 
 import de.iav.frontend.model.Boat;
+import de.iav.frontend.service.BoatService;
 import de.iav.frontend.service.SceneSwitchService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,11 +24,17 @@ public class AddBoatController implements Initializable {
     @FXML
     private TextField boatType;
     private Boat boat;
-
+    private BoatService boatService;
     private final SceneSwitchService sceneSwitchService = SceneSwitchService.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        AddBoatController addBoatController = new AddBoatController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("de/iav/frontend/fxml/AddBoat-Scene.fxml"));
+        loader.setController(addBoatController);
+      //  Parent root = loader.load();
+        // Initialisiere den BoatService
+        boatService = BoatService.getInstance();
     }
 
     public void saveNewBoatButton(Boat boat) {
@@ -40,13 +47,16 @@ public class AddBoatController implements Initializable {
 
     @FXML
     public void saveNewBoatButton(ActionEvent event) {
-        if (boat == null) {
-            boat = new Boat(boatName.getText(), boatType.getText());
-        } else {
-            boat = new Boat(boat.boatName(), boat.boatType());
-        }
-       // switchToMainScene(event);
-      // closeBoatWindow(event);
+        // Erstelle ein neues Boot-Objekt aus den Eingabefeldern
+        Boat newBoat = new Boat(boatName.getText(), boatType.getText());
+
+        // Hier kannst du den Speichervorgang in deinem BoatService oder einer anderen Serviceklasse aufrufen
+        BoatService boatService = BoatService.getInstance();
+        boatService.saveBoat(newBoat);
+
+        // Weitere Aktionen, z.B. zur Hauptseite wechseln oder das Fenster schließen
+        // switchToMainScene(event);
+        // closeBoatWindow(event);
     }
 
     /*
@@ -54,12 +64,6 @@ public class AddBoatController implements Initializable {
     public void cancelBoat(ActionEvent event) {
         closeBoatWindow(event);
     }*/
-
-    private void closeBoatWindow(ActionEvent event) {
-        Stage stage = (Stage) boatName.getScene().getWindow();
-        stage.close();
-      //  sceneSwitchService.saveNewBoatSwitchToMainScene(event);
-    }
 
     @FXML
     protected void switchToMainScene(ActionEvent event) throws IOException {

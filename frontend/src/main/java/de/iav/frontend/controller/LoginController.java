@@ -32,7 +32,7 @@ public class LoginController {
     @FXML
     private void onLoginClick() {
        if (authService.login(usernameInput.getText(), passwordInput.getText())) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/AddBoat-Scene.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Main-Scene.fxml"));
             try {
                 parent = fxmlLoader.load();
             } catch (Exception e) {

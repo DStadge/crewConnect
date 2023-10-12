@@ -105,7 +105,7 @@ public class MainPageController {
     @FXML
     public void switchToUpdateBoatScene(ActionEvent event) throws IOException {
         System.out.println("switchToUpdateBoatScene");
-        /*
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/AddBoat-Scene.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -113,6 +113,6 @@ public class MainPageController {
         stage.setScene(scene);
         stage.setTitle("Boot hinzufuegen");
         stage.show();
-    }*/}
+    }
 }
 

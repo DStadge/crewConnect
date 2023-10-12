@@ -26,9 +26,10 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .authorizeHttpRequests(customizer -> customizer
-                                .requestMatchers("/api/auth/**").permitAll()
-                                .requestMatchers("/api/crewconnect/**").authenticated()
-                                .anyRequest().authenticated()
+                             //   .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/**").permitAll()
+                           //     .requestMatchers("/api/crewconnect/**").authenticated()
+                             //   .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(AbstractHttpConfigurer::disable)
