@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import de.iav.backend.model.Sailor;
 import de.iav.backend.repository.SailorRepository;
 import de.iav.backend.service.SailorService;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -25,7 +25,7 @@ class SailorServiceTest {
     @Mock
     private SailorRepository sailorRepository;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
     }
