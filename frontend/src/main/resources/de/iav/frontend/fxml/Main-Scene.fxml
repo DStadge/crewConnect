@@ -35,14 +35,6 @@
                   <Font name="Comic Sans MS" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToUpdateBoatScene" text="Boot bearbeiten" translateX="65.0">
-               <font>
-                  <Font name="Comic Sans MS" size="14.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
          </children>
       </HBox>
       <TableView fx:id="table" prefHeight="595.0" prefWidth="280.0">

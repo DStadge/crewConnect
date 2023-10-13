@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="tableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.MainPageController">
+<VBox fx:id="tableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="780.0" spacing="10.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.iav.frontend.controller.MainPageController">
    <padding>
       <Insets bottom="40.0" left="40.0" right="40.0" top="10.0" />
    </padding>
@@ -34,14 +34,6 @@
                <font>
                   <Font name="Comic Sans MS" size="14.0" />
                </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#switchToUpdateBoatScene" text="Boot bearbeiten" translateX="65.0">
-               <font>
-                  <Font name="Comic Sans MS" size="14.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
             </Button>
          </children>
       </HBox>

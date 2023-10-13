@@ -15,7 +15,6 @@ public class SceneSwitchService {
     private static SceneSwitchService instance;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-
     public SceneSwitchService() {
         objectMapper.registerModule(new JavaTimeModule());
     }
@@ -28,15 +27,6 @@ public class SceneSwitchService {
     }
 
     public void saveNewSailorSwitchToMainScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Main-Scene.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void saveNewBoatSwitchToMainScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Main-Scene.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

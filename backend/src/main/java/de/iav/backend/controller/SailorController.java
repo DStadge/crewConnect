@@ -3,7 +3,6 @@ package de.iav.backend.controller;
 import de.iav.backend.model.Sailor;
 import de.iav.backend.service.SailorService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 

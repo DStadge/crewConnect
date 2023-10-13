@@ -24,7 +24,7 @@ public class AuthController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hier ist eine Nachricht ohne Authentifizierung!";
+        return "Hier ist eine Nachricht ohne Authentifizierung, u.a. um zu Testen ob der Server läuft.";
     }
 
     @PostMapping("/login")

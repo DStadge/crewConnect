@@ -44,7 +44,6 @@ class SailorControllerTest {
                 LocalDate.of(2023, 9, 22)
         );
 
-        // Wenn sailorService.addSailor aufgerufen wird, geben wir sailorToAdd zurück.
         when(sailorService.addSailor(sailorToAdd)).thenReturn(sailorToAdd);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/crewconnect/sailor")
@@ -73,10 +72,8 @@ class SailorControllerTest {
         sailorList.add(sailor1);
         sailorList.add(sailor2);
 
-        // Definieren Sie das erwartete Verhalten Ihres Mocked SailorService
         when(sailorService.listAllSailor()).thenReturn(sailorList);
 
-        // Führen Sie den Controller-Test durch
         mockMvc.perform(MockMvcRequestBuilders.get("/api/crewconnect/sailor"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
@@ -85,17 +82,14 @@ class SailorControllerTest {
 
     @Test
     void getSailorById() throws Exception {
-        // Erstellen Sie einen Dummy-Sailor mit einer bestimmten ID, den Ihr Mocked SailorService zurückgeben wird
         Sailor expectedSailor = new Sailor("1",
-                "Max",
-                "Mustermann",
-                "Erfahren",
-                LocalDate.of(2022, 1, 1));
+                "Paul",
+                "Panzer",
+                "Anfänger",
+                LocalDate.of(2023, 10, 12));
 
-        // Definieren Sie das erwartete Verhalten Ihres Mocked SailorService
         when(sailorService.getSailorById("1")).thenReturn(Optional.of(expectedSailor));
 
-        // Führen Sie den Controller-Test durch, um einen Seemann nach ID abzurufen
         mockMvc.perform(MockMvcRequestBuilders.get("/api/crewconnect/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))

@@ -1,6 +1,5 @@
 package de.iav.frontend.service;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +11,6 @@ import de.iav.frontend.model.SailorWithoutId;
 import de.iav.frontend.security.AuthService;
 import javafx.application.Platform;
 import javafx.scene.control.TableView;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -126,4 +124,3 @@ public class SailorService {
                 .join();
     }
 }
-
