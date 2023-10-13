@@ -31,7 +31,7 @@ class AuthControllerTest {
     void testHello() throws Exception {
         mockMvc.perform(get("/api/auth/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hier ist eine Nachricht ohne Authentifizierung!"));
+                .andExpect(content().string("Hier ist eine Nachricht ohne Authentifizierung, u.a. um zu Testen ob der Server läuft."));
     }
 
     @Test
