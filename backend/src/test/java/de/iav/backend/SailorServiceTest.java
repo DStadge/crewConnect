@@ -36,10 +36,12 @@ class SailorServiceTest {
                 sailorId, "Paul", "Panzer", "Experte", LocalDate.of(2023, 10, 13));
 
         Sailor updatedSailor = new Sailor(
-                sailorId, "Updated First Name", "Updated Last Name", "Anfänger", LocalDate.of(2023, 2, 20));
+                sailorId, "NeuerVorName", "NeuerNachName", "Anfänger", LocalDate.of(2023, 2, 20));
 
         Mockito.when(sailorRepository.findById(sailorId)).thenReturn(Optional.of(existingSailor));
         Mockito.when(sailorRepository.save(updatedSailor)).thenReturn(updatedSailor);
+
+        System.out.println(sailorService.updateSailorById(sailorId, updatedSailor));
 
         Sailor result = sailorService.updateSailorById(sailorId, updatedSailor);
 
@@ -54,11 +56,18 @@ class SailorServiceTest {
     void testUpdateSailorByIdSailorNotFound() {
         String sailorId = "123";
         Sailor updatedSailor = new Sailor(
-                sailorId, "Updated First Name", "Updated Last Name", "Advanced", LocalDate.of(2023, 2, 20));
+                sailorId, "NeuerVorName", "NeuerNachName", "Anfänger", LocalDate.of(2023, 2, 20));
 
         Mockito.when(sailorRepository.findById(sailorId)).thenReturn(Optional.empty());
 
-        assertThrows(NoSuchElementException.class, () -> sailorService.updateSailorById(sailorId, updatedSailor));
+        assertThrows(NoSuchElementException.class, () -> {
+            try {
+                sailorService.updateSailorById(sailorId, updatedSailor);
+            } catch (NoSuchElementException e) {
+                assertTrue(e.getMessage().contains("Sailor mit der ID: 123 wurde nicht gefunden!"));
+                throw e;
+            }
+        });
 
         Mockito.verify(sailorRepository, Mockito.times(1)).findById(sailorId);
         Mockito.verify(sailorRepository, Mockito.never()).save(updatedSailor);

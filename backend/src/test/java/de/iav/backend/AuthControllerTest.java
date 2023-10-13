@@ -88,10 +88,8 @@ class AuthControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Du hast Dich erfolgreich ausgelogt!"));
 
-        // Überprüfen Sie, ob die Sitzung ungültig ist
         assert session.isInvalid();
 
-        // Überprüfen Sie, ob der Sicherheitskontext leer ist
         assert SecurityContextHolder.getContext().getAuthentication() == null;
     }
 }

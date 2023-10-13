@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 @Service
 @RequiredArgsConstructor
@@ -18,7 +17,7 @@ public class AppUserService implements UserDetailsService{
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { //nachfolgend ist es immer "username" egal ob username oder email
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = appUserRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Benutzer nicht gefunden! "));
         return User.builder()
@@ -40,7 +39,7 @@ public class AppUserService implements UserDetailsService{
                 null,
                 appUserRequest.username(),
                 appUserRequest.email(),
-                passwordEncoder.encode(appUserRequest.password()),// Passwort ist nicht gehasht - appUserRequest.password(),
+                passwordEncoder.encode(appUserRequest.password()),
                 AppUserRole.USER
         );
         AppUser savedUser = appUserRepository.save(userToSave);

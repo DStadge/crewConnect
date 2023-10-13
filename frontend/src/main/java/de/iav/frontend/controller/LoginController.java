@@ -24,11 +24,6 @@ public class LoginController {
 
     private final AuthService authService = AuthService.getInstance();
 
-   /* @FXML
-    protected void onLoginClick() {
-        login();
-    }*/
-
     @FXML
     private void onLoginClick() {
        if (authService.login(usernameInput.getText(), passwordInput.getText())) {

@@ -16,7 +16,6 @@ import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -57,8 +56,7 @@ public class AddSailorController implements Initializable {
     }
 
     public int getIndexOfExperienceChoiceBoxItem(ChoiceBox<String> choiceBox, Sailor sailorToUpdate) {
-        // Find the index of the specified Sailor object in the ChoiceBox.
-        int selectedIndex = -1; // Default value if the item is not found.
+        int selectedIndex = -1;
         for (int i = 0; i < choiceBox.getItems().size(); i++) {
             String element = choiceBox.getItems().get(i);
             if (element.equals(sailorToUpdate.experience())) {
