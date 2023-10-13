@@ -33,14 +33,10 @@ class SailorServiceTest {
     void testUpdateSailorById() {
         String sailorId = "123";
         Sailor existingSailor = new Sailor(
-                sailorId, "Paul", "Panzer", "Experte", LocalDate.of(2023, 10, 13),
-                new Boat("Pinta", "SV")
-        );
+                sailorId, "Paul", "Panzer", "Experte", LocalDate.of(2023, 10, 13));
 
         Sailor updatedSailor = new Sailor(
-                sailorId, "Updated First Name", "Updated Last Name", "Anfänger", LocalDate.of(2023, 2, 20),
-                new Boat("Updated Boat Name", "Updated Boat Type")
-        );
+                sailorId, "Updated First Name", "Updated Last Name", "Anfänger", LocalDate.of(2023, 2, 20));
 
         Mockito.when(sailorRepository.findById(sailorId)).thenReturn(Optional.of(existingSailor));
         Mockito.when(sailorRepository.save(updatedSailor)).thenReturn(updatedSailor);
@@ -58,9 +54,7 @@ class SailorServiceTest {
     void testUpdateSailorByIdSailorNotFound() {
         String sailorId = "123";
         Sailor updatedSailor = new Sailor(
-                sailorId, "Updated First Name", "Updated Last Name", "Advanced", LocalDate.of(2023, 2, 20),
-                new Boat("Updated Boat Name", "Updated Boat Type")
-        );
+                sailorId, "Updated First Name", "Updated Last Name", "Advanced", LocalDate.of(2023, 2, 20));
 
         Mockito.when(sailorRepository.findById(sailorId)).thenReturn(Optional.empty());
 

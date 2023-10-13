@@ -34,7 +34,6 @@ public class AddSailorController implements Initializable {
     }
 
     private final SailorService sailorService = SailorService.getInstance();
-    private final BoatService boatService = BoatService.getInstance();
 
     @FXML
     private TextField firstName;

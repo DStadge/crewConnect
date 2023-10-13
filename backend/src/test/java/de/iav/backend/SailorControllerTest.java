@@ -36,16 +36,12 @@ class SailorControllerTest {
 
     @Test
     void testAddSailor() throws Exception {
-        // Erstelle ein gültiges Boat-Objekt
-        Boat boat = new Boat("BoatName", "BoatType");
-
         Sailor sailorToAdd = new Sailor(
                 "3",
                 "Paul",
                 "Panzer",
                 "experte",
-                LocalDate.of(2023, 9, 22),
-                boat
+                LocalDate.of(2023, 9, 22)
         );
 
         // Wenn sailorService.addSailor aufgerufen wird, geben wir sailorToAdd zurück.
@@ -66,16 +62,14 @@ class SailorControllerTest {
         Sailor sailor1 = new Sailor("1", "Paul",
                 "Panzer",
                 "gut",
-                LocalDate.of(2022, 1, 1),
-                new Boat("Pinta", "SV"));
+                LocalDate.of(2022, 1, 1));
         Sailor sailor2 = new Sailor("2",
                 "Paulina",
                 "Panzer2",
                 "experte",
                 LocalDate.of(2023,
                         2,
-                        15),
-                new Boat("Pinta", "SV"));
+                        15));
         sailorList.add(sailor1);
         sailorList.add(sailor2);
 
@@ -96,8 +90,7 @@ class SailorControllerTest {
                 "Max",
                 "Mustermann",
                 "Erfahren",
-                LocalDate.of(2022, 1, 1),
-                new Boat("Pinta", "SV"));
+                LocalDate.of(2022, 1, 1));
 
         // Definieren Sie das erwartete Verhalten Ihres Mocked SailorService
         when(sailorService.getSailorById("1")).thenReturn(Optional.of(expectedSailor));
@@ -121,8 +114,7 @@ class SailorControllerTest {
         Sailor updatedSailor = new Sailor("1",
                 "NeuerVorname",
                 "NeuerNachname",
-                "NeueErfahrung", LocalDate.of(2023, 9, 22),
-        new Boat("Pinta", "SV"));
+                "NeueErfahrung", LocalDate.of(2023, 9, 22));
 
         when(sailorService.updateSailorById("1", updatedSailor)).thenReturn(updatedSailor);
 

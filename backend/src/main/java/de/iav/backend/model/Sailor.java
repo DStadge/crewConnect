@@ -10,7 +10,6 @@ public record Sailor(
         String firstName,
         String lastName,
         String experience,
-        LocalDate sailDate,
-        Boat boat
+        LocalDate sailDate
 ) {
 }
