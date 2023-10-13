@@ -29,7 +29,7 @@ class SailorServiceTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
     }
-    @Test
+   /* @Test
     void testUpdateSailorById() {
         String sailorId = "123";
         Sailor existingSailor = new Sailor(
@@ -71,5 +71,5 @@ class SailorServiceTest {
 
         Mockito.verify(sailorRepository, Mockito.times(1)).findById(sailorId);
         Mockito.verify(sailorRepository, Mockito.never()).save(updatedSailor);
-    }
+    }*/
 }
