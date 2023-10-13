@@ -1,0 +1,6 @@
+*.iml
+.idea
+frontend/.mvn
+frontend/.mvnw
+frontend/mvnw.cmd
+/frontend/target/classes/de/iav/frontend/controller/AddSailorController$1.class
