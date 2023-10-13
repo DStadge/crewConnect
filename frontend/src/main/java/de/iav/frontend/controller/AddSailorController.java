@@ -16,7 +16,6 @@ import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -27,11 +26,6 @@ public class AddSailorController implements Initializable {
 
     private static final String FONT_NAME = "Comic Sans MS";
     private static final Font customFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
-
-    private void setDialogPaneStyle(Alert alert) {
-        Font customFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
-        alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
-    }
 
     private final SailorService sailorService = SailorService.getInstance();
 
@@ -76,7 +70,7 @@ public class AddSailorController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Tage bis zum Segelerlebnis");
         alert.setHeaderText(null);
-        setDialogPaneStyle(alert);
+        alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
         if (daysDifference == 0) {
             alert.setContentText("Heute ist dein Segelerlebnis! Viel Spaß dabei!");
         } else if (daysDifference == 1) {

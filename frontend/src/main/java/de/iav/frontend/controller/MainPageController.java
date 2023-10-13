@@ -10,17 +10,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 public class MainPageController {
+
+    private static final String FONT_NAME = "Comic Sans MS";
+    private static final Font customFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
 
     private Scene scene;
     private Parent root;
@@ -50,7 +55,6 @@ public class MainPageController {
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         experienceColumn.setCellValueFactory(new PropertyValueFactory<>("experience"));
         sailDateColumn.setCellValueFactory(new PropertyValueFactory<>("sailDate"));
-
         table.getItems().addAll(allSailor);
     }
 
@@ -68,17 +72,24 @@ public class MainPageController {
     @FXML
     public void deleteSailorById(ActionEvent event) {
         sailorService.deleteSailorById(table.getSelectionModel().getSelectedItem().sailorId(), table);
+        Sailor selectedSailor = table.getSelectionModel().getSelectedItem();
+
+        String firstName = selectedSailor.getFirstName();
+        sailorService.deleteSailorById(selectedSailor.sailorId(), table);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Bestätigung");
+        alert.setHeaderText("Der Segler " + firstName + " wurde gelöscht");
+        alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
+        alert.showAndWait();
     }
 
     @FXML
     public void switchToUpdateSailorScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/AddSailor-Scene.fxml"));
         root = loader.load();
-
         Sailor sailorToUpdate = table.getSelectionModel().getSelectedItem();
         AddSailorController addsailorController = loader.getController();
         addsailorController.setSelectedSailor(sailorToUpdate);
-
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
