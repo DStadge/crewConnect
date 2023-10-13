@@ -22,16 +22,13 @@ public class SailorService {
     }
 
     public Sailor addSailor(Sailor sailorToAdd){
-
         return sailorRepository.save(sailorToAdd);
     }
 
     public Optional<Sailor> getSailorById(String sailorId){
-
         return sailorRepository.findById(sailorId);
     }
     public void deleteSailorById(String sailorId){
-
         sailorRepository.deleteById(sailorId);
     }
     public Sailor updateSailorById(String id, Sailor sailorToUpdate){
