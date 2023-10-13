@@ -41,14 +41,14 @@ class AppUserServiceTest {
 
     @Test
     void testLoadUserByUsername_UserFound() {
-        AppUser appUser = new AppUser("1", "testuser", "test@iav.com", "password", AppUserRole.USER);
+        AppUser appUser = new AppUser("1", "Paul", "paulpanzer@iav.com", "1234", AppUserRole.USER);
 
-        when(appUserRepository.findByEmail("test@iav.com")).thenReturn(Optional.of(appUser));
+        when(appUserRepository.findByEmail("paulpanzer@iav.com")).thenReturn(Optional.of(appUser));
 
-        UserDetails userDetails = appUserService.loadUserByUsername("test@iav.com");
+        UserDetails userDetails = appUserService.loadUserByUsername("paulpanzer@iav.com");
 
         assertThat(userDetails.getUsername()).isEqualTo(appUser.username());
-        assertThat(userDetails.getPassword()).isEqualTo("password");
+        assertThat(userDetails.getPassword()).isEqualTo("1234");
         List<GrantedAuthority> authorities = new ArrayList<>(userDetails.getAuthorities());
         assertThat(authorities)
                 .extracting(GrantedAuthority::getAuthority)
@@ -57,9 +57,9 @@ class AppUserServiceTest {
 
     @Test
     void testLoadUserByUsername_UserNotFound() {
-        when(appUserRepository.findByEmail("test@iav.com")).thenReturn(Optional.empty());
+        when(appUserRepository.findByEmail("paulpanzer@iav.com")).thenReturn(Optional.empty());
 
-        Throwable thrown = catchThrowable(() -> appUserService.loadUserByUsername("test@iav.com"));
+        Throwable thrown = catchThrowable(() -> appUserService.loadUserByUsername("paulpanzer@iav.com"));
 
         assertThat(thrown).isInstanceOf(UsernameNotFoundException.class);
 
@@ -69,31 +69,31 @@ class AppUserServiceTest {
 
     @Test
     void testCreateUser_Success() {
-        AppUserRequest appUserRequest = new AppUserRequest("newuser", "newuser@iav.com", "password");
-        AppUser appUser = new AppUser("1", "newuser", "newuser@iav.com", "password", AppUserRole.USER);
+        AppUserRequest appUserRequest = new AppUserRequest("Paul", "paulpanzer@iav.com", "1234");
+        AppUser appUser = new AppUser("1", "Paul", "paulpanzer@iav.com", "1234", AppUserRole.USER);
 
-        when(appUserRepository.findByUsername("newuser")).thenReturn(Optional.empty());
-        when(appUserRepository.findByEmail("newuser@test.com")).thenReturn(Optional.empty());
+        when(appUserRepository.findByUsername("Paul")).thenReturn(Optional.empty());
+        when(appUserRepository.findByEmail("paulpanzer@test.com")).thenReturn(Optional.empty());
 
-        when(passwordEncoder.encode("password")).thenReturn("hashedPassword");
+        when(passwordEncoder.encode("1234")).thenReturn("hashedPassword");
 
         when(appUserRepository.save(Mockito.any(AppUser.class))).thenReturn(appUser);
 
         AppUserResponse appUserResponse = appUserService.createUser(appUserRequest);
 
         assertThat(appUserResponse.id()).isEqualTo("1");
-        assertThat(appUserResponse.username()).isEqualTo("newuser");
-        assertThat(appUserResponse.email()).isEqualTo("newuser@iav.com");
-        assertThat(appUserResponse.role().toString()).isEqualTo(AppUserRole.USER.name());
+        assertThat(appUserResponse.username()).isEqualTo("Paul");
+        assertThat(appUserResponse.email()).isEqualTo("paulpanzer@iav.com");
+        assertThat(appUserResponse.role()).hasToString(AppUserRole.USER.name());
     }
 
     @Test
     void testCreateUser_UserAlreadyExists() {
-        AppUserRequest appUserRequest = new AppUserRequest("existinguser", "test@iav.de", "password");
+        AppUserRequest appUserRequest = new AppUserRequest("existinguser", "paulpanzer@iav.de", "1234");
 
-        when(appUserRepository.findByUsername("existinguser")).thenReturn(Optional.of(new AppUser("1", "existinguser", "test@iav.de", "password", AppUserRole.USER)));
+        when(appUserRepository.findByUsername("existinguser")).thenReturn(Optional.of(new AppUser("1", "Paul", "paulpanzer@iav.de", "1234", AppUserRole.USER)));
 
-        when(appUserRepository.findByEmail("existinguser@example.com")).thenReturn(Optional.of(new AppUser("1", "existinguser", "test@iav.de", "password", AppUserRole.USER)));
+        when(appUserRepository.findByEmail("existinguser@example.com")).thenReturn(Optional.of(new AppUser("1", "Paul", "paulpanzer@iav.de", "1234", AppUserRole.USER)));
 
         assertThatThrownBy(() -> appUserService.createUser(appUserRequest))
                 .isInstanceOf(UserAlreadyExistException.class)
