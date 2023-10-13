@@ -29,7 +29,7 @@ class SailorServiceTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
     }
-   /* @Test
+    @Test
     void testUpdateSailorById() {
         String sailorId = "123";
         Sailor existingSailor = new Sailor(
@@ -64,12 +64,12 @@ class SailorServiceTest {
             try {
                 sailorService.updateSailorById(sailorId, updatedSailor);
             } catch (NoSuchElementException e) {
-                assertTrue(e.getMessage().contains("Sailor mit der ID: 123 wurde nicht gefunden!"));
+                assertTrue(e.getMessage().contains("Segler mit der ID: 123 wurde nicht gefunden!"));
                 throw e;
             }
         });
 
         Mockito.verify(sailorRepository, Mockito.times(1)).findById(sailorId);
         Mockito.verify(sailorRepository, Mockito.never()).save(updatedSailor);
-    }*/
+    }
 }

@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -95,7 +96,6 @@ public class AddSailorController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warnung");
             alert.setHeaderText("Bitte fülle alle Felder aus");
-            customFont.getSize();
             alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
             alert.showAndWait();
         } else if (sailDate.getValue().isBefore(LocalDate.now())) {
@@ -103,7 +103,6 @@ public class AddSailorController implements Initializable {
             alert.setTitle("Warnung");
             alert.setHeaderText("Das Datum liegt in der Vergangenheit!");
             alert.setContentText("Bitte gib ein Datum in der Zukunft ein.");
-            customFont.getSize();
             alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
             alert.showAndWait();
         } else {
@@ -113,6 +112,7 @@ public class AddSailorController implements Initializable {
                         lastName.getText(),
                         experienceChoiceBox.getValue(),
                         sailDate.getValue());
+                sailorService.addSailor(newSailor);
                 popup();
             } else {
                 Sailor sailorData = new Sailor(
@@ -122,7 +122,6 @@ public class AddSailorController implements Initializable {
                         experienceChoiceBox.getSelectionModel().getSelectedItem(),
                         sailDate.getValue()
                 );
-
                 sailorService.updateSailorById(sailorId, sailorData);
                 popup();
             }
