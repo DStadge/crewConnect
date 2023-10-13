@@ -3,7 +3,6 @@ package de.iav.backend.service;
 import de.iav.backend.model.Sailor;
 import de.iav.backend.repository.SailorRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
