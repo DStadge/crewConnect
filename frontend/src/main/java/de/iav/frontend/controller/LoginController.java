@@ -45,13 +45,11 @@ public class LoginController {
     @FXML
     protected void onRegisterClick() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/iav/frontend/fxml/Register-Scene.fxml"));
-
         try {
             parent = fxmlLoader.load();
         } catch (Exception e) {
             throw new CustomIOException(e.toString());
         }
-
         scene = new Scene(parent);
         stage = (Stage) usernameInput.getScene().getWindow();
         stage.setScene(scene);
