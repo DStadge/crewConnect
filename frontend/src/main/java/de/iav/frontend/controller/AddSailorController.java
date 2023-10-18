@@ -1,6 +1,5 @@
 package de.iav.frontend.controller;
 
-
 import de.iav.frontend.model.SailorWithoutId;
 import de.iav.frontend.service.SailorService;
 import de.iav.frontend.service.SceneSwitchService;

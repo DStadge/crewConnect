@@ -1,7 +1,5 @@
 package de.iav.frontend.model;
 
-import lombok.Data;
-
 import java.time.LocalDate;
 
 public record Sailor(

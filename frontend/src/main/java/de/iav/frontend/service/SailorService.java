@@ -40,7 +40,6 @@ public class SailorService {
         return instance;
     }
 
-
     private Sailor mapToSailor(String json) {
         try {
             return objectMapper.readValue(json, Sailor.class);
