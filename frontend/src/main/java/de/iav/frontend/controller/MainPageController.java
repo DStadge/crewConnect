@@ -20,6 +20,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class MainPageController {
@@ -75,10 +76,12 @@ public class MainPageController {
         Sailor selectedSailor = table.getSelectionModel().getSelectedItem();
 
         String firstName = selectedSailor.getFirstName();
+        LocalDate sailDate = selectedSailor.getSailDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy");
         sailorService.deleteSailorById(selectedSailor.sailorId(), table);
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Bestätigung");
-        alert.setHeaderText("Der Segler " + firstName + " wurde gelöscht");
+        alert.setHeaderText("Das Segelerlebnis am: " +  sailDate.format(formatter) + " für: "+ firstName + " wurde gelöscht");
         alert.getDialogPane().setStyle("-fx-font: " + customFont.getSize() + "px '" + FONT_NAME + "';");
         alert.showAndWait();
     }

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -50,7 +51,10 @@
                   <Font name="Comic Sans MS" size="14.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="experienceChoiceBox" prefWidth="150.0" translateX="10.0" translateY="200.0" />
+            <ChoiceBox fx:id="experienceChoiceBox" prefWidth="150.0" translateX="10.0" translateY="200.0">
+               <tooltip>
+                  <Tooltip fx:id="toolTip" text="Empty Tooltip" />
+               </tooltip></ChoiceBox>
             <Label text="Wunschdatum" translateX="10.0" translateY="225.0">
                <font>
                   <Font name="Comic Sans MS" size="14.0" />

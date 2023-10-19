@@ -12,9 +12,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -47,6 +50,30 @@ public class AddSailorController implements Initializable {
         experienceChoiceBox.getItems().add("Anfaenger");
         experienceChoiceBox.getItems().add("Fortgeschritten");
         experienceChoiceBox.getItems().add("Experte");
+
+        Tooltip firstNameTooltip = new Tooltip("Gib deinen Vornamen ein");
+        Font nameTooltipFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
+        firstNameTooltip.setFont(nameTooltipFont);
+        firstName.setTooltip(firstNameTooltip);
+
+        Tooltip lastNameTooltip = new Tooltip("Gib deinen Nachnamen ein");
+        lastNameTooltip.setFont(nameTooltipFont);
+        lastName.setTooltip(lastNameTooltip);
+
+        Tooltip choiceBoxTooltip = new Tooltip("Anfänger <10 Segeltage\n" +
+                "Fortgeschritten >20 Segeltage\n" +
+                "Experte >5 Regatten als Steuermann\n");
+        Font tooltipFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
+        choiceBoxTooltip.setFont(tooltipFont);
+        experienceChoiceBox.setTooltip(choiceBoxTooltip);
+        choiceBoxTooltip.setShowDuration(Duration.millis(5000));
+
+        Tooltip dateTooltip = new Tooltip("Wähle das Segeldatum aus");
+        Font dateTooltipFont = Font.font(FONT_NAME, FontWeight.BOLD, 16);
+        dateTooltip.setFont(dateTooltipFont);
+        sailDate.setTooltip(dateTooltip);
+        dateTooltip.setShowDuration(Duration.millis(3000));
+
     }
 
     public int getIndexOfExperienceChoiceBoxItem(ChoiceBox<String> choiceBox, Sailor sailorToUpdate) {
